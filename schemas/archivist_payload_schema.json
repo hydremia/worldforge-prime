@@ -1,0 +1,106 @@
+// schemas/archivist_payload.schema.json — Prime Archivist Payload Schema (v1.0)
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldforge-prime/schemas/archivist_payload.schema.json",
+  "title": "Worldforge Prime Archivist Payload",
+  "description": "Canonical storage format for entries handled by the Prime Archivist Worker.",
+  "type": "object",
+  "required": ["id", "world", "type", "data"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable, globally-unique ID for this canon entry (e.g. fr.faction.harpers, fr.region.sword_coast)."
+    },
+    "world": {
+      "type": "string",
+      "description": "World key (e.g. FR, EB, HB_custom)."
+    },
+    "campaign": {
+      "type": ["string", "null"],
+      "description": "Optional campaign key for campaign-scoped canon. Null or omitted for global world canon."
+    },
+    "type": {
+      "type": "string",
+      "description": "Entry type discriminator used for filtering and tooling.",
+      "enum": [
+        "npc",
+        "faction",
+        "region",
+        "location",
+        "item",
+        "event",
+        "timeline",
+        "name_entry",
+        "rule",
+        "lore",
+        "other"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "description": "Canonical repo-style path for the MD mirror (if any), e.g. canon/worlds/FR/factions/harpers.md.",
+      "pattern": "^[A-Za-z0-9_.\-/]+$"
+    },
+    "canon_tier": {
+      "type": "integer",
+      "description": "Canon tier: 1 = user/world canon, 2 = external canon reference, 3 = improv promoted.",
+      "minimum": 1,
+      "maximum": 3,
+      "default": 1
+    },
+    "source": {
+      "type": "string",
+      "description": "Origin of this entry (e.g. 'prime', 'wa_faerun_unlimited', 'user_import', 'nomina')."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic-ish version for this entry (e.g. v1.0.0)."
+    },
+    "tags": {
+      "type": "array",
+      "description": "Freeform tags for querying and tooling.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data": {
+      "type": "object",
+      "description": "Type-specific structured payload for this entry.",
+      "properties": {},
+      "additionalProperties": true
+    },
+    "markdown": {
+      "type": ["string", "null"],
+      "description": "Optional full Markdown representation of this entry (mirroring canon/ files)."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when this entry was first created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp of the last update."
+    },
+    "history": {
+      "type": "array",
+      "description": "Optional change history entries for this canon object.",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "action"],
+        "properties": {
+          "timestamp": { "type": "string", "format": "date-time" },
+          "actor": { "type": "string", "description": "Who/what made the change (e.g. user id, worker id)." },
+          "action": { "type": "string", "description": "Action type (create, update, merge, delete, import)." },
+          "notes": { "type": "string" },
+          "prev_version": { "type": "string" },
+          "new_version": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
+
