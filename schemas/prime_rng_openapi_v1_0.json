@@ -1,0 +1,165 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Worldforge Prime RNG API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "responses": {
+          "200": {
+            "description": "Service is healthy"
+          }
+        }
+      }
+    },
+    "/roll": {
+      "post": {
+        "summary": "Perform a single dice roll specification",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SingleRollSpec"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Roll result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RollResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch": {
+      "post": {
+        "summary": "Perform multiple dice roll specifications in a batch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRollRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Batch roll results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/RollResult"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RollMeta": {
+        "type": "object",
+        "additionalProperties": true
+      },
+      "SingleRollSpec": {
+        "type": "object",
+        "required": [
+          "sides"
+        ],
+        "properties": {
+          "sides": {
+            "type": "integer",
+            "minimum": 2
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "label": {
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/RollMeta"
+          }
+        }
+      },
+      "RollResult": {
+        "type": "object",
+        "required": [
+          "sides",
+          "rolls",
+          "total",
+          "rollId",
+          "timestamp"
+        ],
+        "properties": {
+          "sides": {
+            "type": "integer"
+          },
+          "rolls": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/RollMeta"
+          },
+          "rollId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "BatchRollRequest": {
+        "type": "object",
+        "required": [
+          "rolls"
+        ],
+        "properties": {
+          "rolls": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SingleRollSpec"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          }
+        }
+      }
+    }
+  }
+}

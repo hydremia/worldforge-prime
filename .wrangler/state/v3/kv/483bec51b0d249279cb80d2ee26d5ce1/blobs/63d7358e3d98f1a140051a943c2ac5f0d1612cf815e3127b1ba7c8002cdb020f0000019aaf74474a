@@ -1,0 +1,108 @@
+{
+  "version": "v1.0",
+  "species": "human",
+  "culture": "ffolk",
+  "aliases": [],
+  "tags": [
+    "faerun",
+    "human",
+    "ffolk"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "default",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Bre",
+          "Cai",
+          "Dav",
+          "El",
+          "Lle",
+          "Tor"
+        ],
+        "core": [
+          "mar",
+          "rin",
+          "don",
+          "wyn",
+          "rik"
+        ],
+        "suffix": [
+          "en",
+          "or",
+          "an"
+        ],
+        "family_core": [
+          "Bremar",
+          "Tordon",
+          "Llewynn"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "th",
+      "ar",
+      "an",
+      "el",
+      "or"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "medium",
+    "notes": "ffolk human naming patterns."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "BreMar"
+    ],
+    "female": [
+      "CaiRin"
+    ],
+    "neutral": [
+      "BreRik"
+    ],
+    "family": [
+      "Bremar",
+      "Tordon"
+    ]
+  }
+}

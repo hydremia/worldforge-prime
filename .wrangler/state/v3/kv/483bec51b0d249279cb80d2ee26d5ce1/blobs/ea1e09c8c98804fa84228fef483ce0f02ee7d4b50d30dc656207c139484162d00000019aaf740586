@@ -1,0 +1,158 @@
+{
+  "version": "v1.0",
+  "species": "elf",
+  "culture": "drow",
+  "aliases": [
+    "Dark Elf",
+    "Ilythiiri"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "elf",
+    "drow"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{prefix}{core}{suffix}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}",
+      "{prefix}{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "underdark",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Zar",
+          "Vel",
+          "Lil",
+          "Xun",
+          "Driz",
+          "Mal",
+          "Sol",
+          "Bel",
+          "Nar",
+          "Jha"
+        ],
+        "core": [
+          "zryn",
+          "veth",
+          "thra",
+          "raun",
+          "nith",
+          "mizz",
+          "dynn",
+          "zair",
+          "baen",
+          "dorl",
+          "phryn",
+          "zyr",
+          "jhul",
+          "talar"
+        ],
+        "suffix": [
+          "rin",
+          "dri",
+          "ra",
+          "ith",
+          "ir",
+          "us",
+          "ar",
+          "is"
+        ],
+        "family_core": [
+          "Baenre",
+          "Do'Urden",
+          "Xorlarrin",
+          "Melarn",
+          "Tlabbar",
+          "Freth",
+          "Kenafin",
+          "Vrammyr",
+          "Tuin",
+          "T'elzar"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "zz",
+      "zr",
+      "dr",
+      "jh",
+      "ph",
+      "ll",
+      "nn"
+    ],
+    "forbiddenClusters": [
+      "aaa",
+      "eee"
+    ],
+    "vowelBias": "low",
+    "notes": "Drow names favor sharp, sibilant consonants, doubled letters, and harsh clusters, with fewer open vowels."
+  },
+  "rarity": {
+    "common": 0.55,
+    "uncommon": 0.3,
+    "rare": 0.15
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 8,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Initial Drow set. Requires Agent Mode check for canonical overlap and overuse of specific syllables."
+  },
+  "examples": {
+    "male": [
+      "Zarveth",
+      "Belzryn",
+      "Driztalar",
+      "Narmizz",
+      "Xunphryn"
+    ],
+    "female": [
+      "Veldra",
+      "Lilithra",
+      "Malnith",
+      "Jhazaira",
+      "Solbaeris"
+    ],
+    "neutral": [
+      "Zairith",
+      "Mizzryn",
+      "Talzair",
+      "Jhulveth"
+    ],
+    "family": [
+      "Baenre",
+      "Do'Urden",
+      "Xorlarrin",
+      "Melarn",
+      "Freth"
+    ]
+  }
+}

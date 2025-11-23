@@ -1,0 +1,6 @@
+{
+  "name": "worldforge-prime-rng",
+  "main": "workers/rng/src/index.ts",
+  "compatibility_date": "2025-11-23",
+  
+}

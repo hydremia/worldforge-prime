@@ -1,0 +1,11 @@
+{
+  "name": "worldforge-prime-archivist",
+  "main": "workers/archivist/src/index.ts",
+  "compatibility_date": "2025-11-23",
+  "kv_namespaces": [
+    {
+      "binding": "ARCHIVIST_KV",
+      "id": "ba714bff398d4053a2bb6182d0aee97d"
+    }
+  ]
+}

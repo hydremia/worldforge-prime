@@ -1,0 +1,126 @@
+{
+  "version": "v1.0",
+  "species": "orc",
+  "culture": "gray_orc",
+  "aliases": [
+    "Gray Orc"
+  ],
+  "tags": [
+    "faerun",
+    "orc",
+    "gray_orc"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "gray",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Gru",
+          "Mul",
+          "Zug",
+          "Dor",
+          "Ur",
+          "Thok",
+          "Mag",
+          "Bur",
+          "Ruk",
+          "Vor"
+        ],
+        "core": [
+          "mak",
+          "thar",
+          "gak",
+          "dorg",
+          "muk",
+          "rag",
+          "tark",
+          "gor",
+          "druk"
+        ],
+        "suffix": [
+          "ak",
+          "ug",
+          "ok",
+          "arg",
+          "ash"
+        ],
+        "family_core": [
+          "Skulltaker",
+          "Bloodmaw",
+          "Ironskull",
+          "Stormfist",
+          "Ashbreaker"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "gr",
+      "dr",
+      "rk",
+      "rg",
+      "th"
+    ],
+    "forbiddenClusters": [
+      "iii"
+    ],
+    "vowelBias": "low",
+    "notes": "Gray Orc names are guttural, direct, with heavy consonant clusters."
+  },
+  "rarity": {
+    "common": 0.65,
+    "uncommon": 0.25,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 8,
+    "similarityThreshold": 0.8
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Needs Agent Mode overlap check with other orc cultures."
+  },
+  "examples": {
+    "male": [
+      "Grumak",
+      "Zugthar",
+      "Vordruk"
+    ],
+    "female": [
+      "Mulgash",
+      "Rukash"
+    ],
+    "neutral": [
+      "Thokrag"
+    ],
+    "family": [
+      "Skulltaker",
+      "Ironskull"
+    ]
+  }
+}

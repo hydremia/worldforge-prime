@@ -1,0 +1,132 @@
+{
+  "version": "v1.0",
+  "species": "tiefling",
+  "culture": "infernal",
+  "aliases": [
+    "Standard Tiefling",
+    "Infernal-blooded"
+  ],
+  "tags": [
+    "faerun",
+    "tiefling",
+    "infernal"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "infernal",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Az",
+          "Kas",
+          "Vor",
+          "Bel",
+          "Zar",
+          "Mal",
+          "Rav",
+          "Sar",
+          "As",
+          "Or"
+        ],
+        "core": [
+          "mod",
+          "zair",
+          "kesh",
+          "vath",
+          "rael",
+          "dros",
+          "theris",
+          "mora",
+          "zen"
+        ],
+        "suffix": [
+          "os",
+          "is",
+          "ar",
+          "ath",
+          "ir",
+          "en"
+        ],
+        "family_core": [
+          "Flameborn",
+          "Nightbrand",
+          "Ashwhisper",
+          "Hellstride",
+          "Emberthorn"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "zh",
+      "sk",
+      "vr",
+      "th"
+    ],
+    "forbiddenClusters": [
+      "aaa",
+      "eee"
+    ],
+    "vowelBias": "medium",
+    "notes": "Infernal names draw on sharp consonants and ritualistic cadence."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Needs Agent Mode review for infernal phoneme drift."
+  },
+  "examples": {
+    "male": [
+      "Azmod",
+      "Keshar",
+      "Belmora"
+    ],
+    "female": [
+      "Zarael",
+      "Malen",
+      "Ravena"
+    ],
+    "neutral": [
+      "Vorthen",
+      "Ormora"
+    ],
+    "family": [
+      "Flameborn",
+      "Ashwhisper"
+    ]
+  }
+}

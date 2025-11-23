@@ -1,0 +1,140 @@
+{
+  "version": "v1.0",
+  "species": "dwarf",
+  "culture": "shield_dwarf",
+  "aliases": [
+    "Mountain Dwarf"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "dwarf",
+    "shield_dwarf"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}",
+      "{prefix}{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "stone",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Brok",
+          "Thra",
+          "Dur",
+          "Bal",
+          "Kor",
+          "Gim",
+          "Har",
+          "Rag",
+          "Var",
+          "Bru"
+        ],
+        "core": [
+          "mir",
+          "drin",
+          "kor",
+          "gar",
+          "dun",
+          "rak",
+          "mod",
+          "grim",
+          "drak",
+          "thor"
+        ],
+        "suffix": [
+          "in",
+          "ar",
+          "or",
+          "im",
+          "um",
+          "ain"
+        ],
+        "family_core": [
+          "Ironfist",
+          "Stonehelm",
+          "Battlehammer",
+          "Deepdelver",
+          "Rockseeker",
+          "Steelbreaker",
+          "Ironshield",
+          "Thunderbrand"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "dr",
+      "gr",
+      "kr",
+      "th",
+      "br"
+    ],
+    "forbiddenClusters": [
+      "aaa",
+      "eee"
+    ],
+    "vowelBias": "low",
+    "notes": "Shield Dwarf names use heavy consonants and stone-associated clusters."
+  },
+  "rarity": {
+    "common": 0.65,
+    "uncommon": 0.25,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 7,
+    "similarityThreshold": 0.8
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Needs Agent Mode rarity verification."
+  },
+  "examples": {
+    "male": [
+      "Brokgar",
+      "Thradin",
+      "Durgar",
+      "Varkor"
+    ],
+    "female": [
+      "Balgrin",
+      "Korima",
+      "Harvain"
+    ],
+    "neutral": [
+      "Ragthor",
+      "Modrak"
+    ],
+    "family": [
+      "Ironfist",
+      "Stonehelm",
+      "Deepdelver"
+    ]
+  }
+}
