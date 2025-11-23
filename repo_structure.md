@@ -1,40 +1,38 @@
-# worldforge-prime — Repo Structure (v1.0)
+# worldforge-prime — Repo & Runtime Manifest (v1.0)
 
-> Recommended top-level layout for the `worldforge-prime` repository.
+> Canonical map of the **Worldforge Prime** repo and its live runtime surfaces.  
+> This file is the **source of truth** for folder layout, workers, KV bindings, and schema locations.
+
+---
+
+## 1. Repo Tree (high-level)
 
 ```text
 worldforge-prime/
-├─ instructions/
-│  ├─ prime_core_block_outline.md
-│  ├─ prime_extended_instructions.md
-│  ├─ prime_mode_templates.md
-│  ├─ prime_conversation_starters.md
-│  └─ (future) prime_core_block_final.md   # compressed <8k text for GPT
-│
-├─ roadmaps/
-│  ├─ phase_1_normalized_roadmap.md
-│  └─ (future) phase_2_cartographer_roadmap.md
-│
-├─ schemas/
-│  ├─ prime_action_schema_stubs.json
-│  ├─ (future) archivist_payload.schema.json
-│  ├─ (future) nomina_template.schema.json
-│  └─ (future) region_manifest.schema.json
-│
-├─ canon/
-│  ├─ README.md                 # how canon is organized and promoted
-│  └─ (future) worlds/FR/...    # FR-specific lore entries as .md
-│
-├─ regions/
-│  └─ (future) fr_sword_coast_v1.json
-│
-├─ nomina/
-│  ├─ README.md                 # hybrid model explanation
-│  └─ (future) fr_elf_high_template.json
-│
-├─ legacy/
-│  └─ v3.x/                     # any migrated or archived legacy artifacts
-│
-└─ MASTER_DOC.md                # exported Worldforge Prime master document
-```
+  README.md
+  repo_structure.md                 # this file
+  MASTER_DOC.md                     # exported Worldforge Prime master document
 
+  /instructions/                    # core Prime instructions & guidance
+  /roadmaps/                        # phase roadmaps, trackers, checklists
+  /schemas/                         # OpenAPI + JSON schemas for tools/workers
+
+  /nomina/
+    /templates/                     # species/culture Nomina templates (JSON)
+    /seeds/                         # species/culture Nomina seeds (JSONL)
+
+  /workers/
+    /nomina/
+      README.md                     # Nomina worker spec
+      /src/
+        index.ts                    # CF Worker entrypoint
+        nominaTypes.ts              # shared TS types/interfaces
+        nominaRegistry.ts           # KV access helper
+        nominaEngine.ts             # name generation logic
+        /routes/
+          generate.ts               # POST /nomina/generate
+          cultures.ts               # GET  /nomina/cultures
+          debugCulture.ts           # POST /nomina/debug/culture
+
+  /canon/                           # (future) Prime-aligned setting & lore
+  /legacy/                          # archived older WF artifacts (non-Prime)

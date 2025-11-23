@@ -1,0 +1,135 @@
+{
+  "version": "v1.0",
+  "species": "dwarf",
+  "culture": "gold_dwarf",
+  "aliases": [
+    "Southern Dwarf"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "dwarf",
+    "gold_dwarf"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}",
+      "{prefix}{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "sunstone",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Aru",
+          "Bel",
+          "Del",
+          "Fara",
+          "Gur",
+          "Kel",
+          "Lor",
+          "Mar",
+          "Nor",
+          "Sel"
+        ],
+        "core": [
+          "deth",
+          "var",
+          "mir",
+          "thal",
+          "ron",
+          "dan",
+          "kor",
+          "ran",
+          "lir"
+        ],
+        "suffix": [
+          "en",
+          "ar",
+          "or",
+          "eth",
+          "al"
+        ],
+        "family_core": [
+          "Brightforge",
+          "Goldmantle",
+          "Hammershine",
+          "Sunward",
+          "Deepamber",
+          "Amberthane",
+          "Runecrest"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "th",
+      "lr",
+      "rn",
+      "nd"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "medium",
+    "notes": "Gold Dwarf names are slightly more melodic than Shield Dwarf forms."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Requires Agent Mode check for melodic cluster consistency."
+  },
+  "examples": {
+    "male": [
+      "Arumir",
+      "Belvar",
+      "Kelran",
+      "Nordeth"
+    ],
+    "female": [
+      "Delira",
+      "Faraleth",
+      "Selmir"
+    ],
+    "neutral": [
+      "Marvar",
+      "Lorron"
+    ],
+    "family": [
+      "Brightforge",
+      "Goldmantle",
+      "Sunward"
+    ]
+  }
+}

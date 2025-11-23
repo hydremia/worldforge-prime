@@ -1,0 +1,119 @@
+{
+  "version": "v1.0",
+  "species": "orc",
+  "culture": "mountain_orc",
+  "aliases": [
+    "Mountain Orc"
+  ],
+  "tags": [
+    "faerun",
+    "orc",
+    "mountain_orc"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "mountain",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Kor",
+          "Tor",
+          "Gor",
+          "Har",
+          "Kar",
+          "Nar",
+          "Bar",
+          "Sor"
+        ],
+        "core": [
+          "grom",
+          "torg",
+          "dakh",
+          "garr",
+          "morg",
+          "thok",
+          "vark"
+        ],
+        "suffix": [
+          "ar",
+          "ok",
+          "or",
+          "ug"
+        ],
+        "family_core": [
+          "Stonecrusher",
+          "Peakmaw",
+          "Cliffrend",
+          "Frostbrand",
+          "Ridgebreaker"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "gr",
+      "rk",
+      "st",
+      "dr"
+    ],
+    "forbiddenClusters": [
+      "aaa"
+    ],
+    "vowelBias": "low",
+    "notes": "Mountain Orc names feel weighty, like rock and avalanche."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 8,
+    "similarityThreshold": 0.81
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Korgrom",
+      "Gordakh",
+      "Harvark"
+    ],
+    "female": [
+      "Karmog",
+      "Sorgra"
+    ],
+    "neutral": [
+      "Torgar"
+    ],
+    "family": [
+      "Stonecrusher",
+      "Cliffrend"
+    ]
+  }
+}

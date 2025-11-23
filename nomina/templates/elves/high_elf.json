@@ -1,0 +1,165 @@
+{
+  "version": "v1.0",
+  "species": "elf",
+  "culture": "high_elf",
+  "aliases": [
+    "Sun Elf",
+    "Gold Elf"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "elf",
+    "high_elf"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{prefix}{core}{suffix}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{prefix}{core}{suffix}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{prefix}{family_core}",
+      "{family_core}{suffix}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "default",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Ae",
+          "Ela",
+          "Ala",
+          "Tha",
+          "Ila",
+          "Va",
+          "Sa",
+          "Cael",
+          "Lae",
+          "Ere"
+        ],
+        "core": [
+          "rion",
+          "ndor",
+          "thas",
+          "mir",
+          "lian",
+          "vandar",
+          "driel",
+          "nor",
+          "rael",
+          "thir",
+          "vion",
+          "rian",
+          "rior",
+          "deth",
+          "loth"
+        ],
+        "suffix": [
+          "ar",
+          "el",
+          "ion",
+          "ir",
+          "is",
+          "iel",
+          "ael",
+          "ien",
+          "os",
+          "or"
+        ],
+        "family_core": [
+          "Amastacia",
+          "Galanodel",
+          "Holimion",
+          "Liadon",
+          "Meliamne",
+          "Siannodel",
+          "Xiloscient",
+          "Ilphelkiir",
+          "Nailo",
+          "Amakiir"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "ae",
+      "ea",
+      "ia",
+      "ie",
+      "th",
+      "ll",
+      "nd",
+      "st",
+      "ri"
+    ],
+    "forbiddenClusters": [
+      "kk",
+      "ppp",
+      "zzz",
+      "rrr"
+    ],
+    "vowelBias": "high",
+    "notes": "High Elven names favor elegant, multi-syllabic forms with flowing vowels and soft consonants."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 5,
+    "similarityThreshold": 0.85
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Initial High Elf set. Requires Agent Mode pass for seed clustering and collision analysis."
+  },
+  "examples": {
+    "male": [
+      "Alerion",
+      "Caelthir",
+      "Vaerion",
+      "Therion",
+      "Elaendar"
+    ],
+    "female": [
+      "Alaithiel",
+      "Elanriel",
+      "Ilariel",
+      "Laeriel",
+      "Saeviel"
+    ],
+    "neutral": [
+      "Caelmiran",
+      "Tharion",
+      "Eldarion",
+      "Ilavion"
+    ],
+    "family": [
+      "Amastacia",
+      "Galanodel",
+      "Holimion",
+      "Liadon",
+      "Siannodel"
+    ]
+  }
+}

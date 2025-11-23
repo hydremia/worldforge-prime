@@ -1,0 +1,122 @@
+{
+  "version": "v1.0",
+  "species": "halfling",
+  "culture": "lightfoot",
+  "aliases": [
+    "Hairfoot"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "halfling",
+    "lightfoot"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "wander",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Li",
+          "Pa",
+          "Ri",
+          "Fo",
+          "Ta",
+          "Ka",
+          "Bel",
+          "No",
+          "Sa"
+        ],
+        "core": [
+          "lo",
+          "rin",
+          "bo",
+          "do",
+          "fer",
+          "lin",
+          "mo",
+          "ro"
+        ],
+        "suffix": [
+          "o",
+          "in",
+          "er",
+          "a",
+          "el"
+        ],
+        "family_core": [
+          "Brushgather",
+          "Tealeaf",
+          "Goodbarrel",
+          "Underbough",
+          "Greenbottle"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "ll",
+      "nn"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "high",
+    "notes": "Lightfoot names are cheerful, bright, often lilting."
+  },
+  "rarity": {
+    "common": 0.7,
+    "uncommon": 0.2,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.83
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Needs Agent Mode smoothing"
+  },
+  "examples": {
+    "male": [
+      "Lorin",
+      "Beldo",
+      "Tarer"
+    ],
+    "female": [
+      "Salin",
+      "Kariel"
+    ],
+    "neutral": [
+      "Rimo"
+    ],
+    "family": [
+      "Tealeaf",
+      "Underbough"
+    ]
+  }
+}
