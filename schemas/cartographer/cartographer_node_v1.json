@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CartographerNode",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "cartographer.node.v1"
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "worldId": {
+      "type": "string"
+    },
+    "parentId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "childrenIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "environment": {
+      "$ref": "cartographer_environment_v1.json"
+    },
+    "settlementType": {
+      "type": "string"
+    },
+    "locationType": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "magicSaturation": {
+      "type": "number"
+    },
+    "hazardOverride": {
+      "type": "number"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "id",
+    "type",
+    "worldId",
+    "name",
+    "createdAt",
+    "updatedAt"
+  ]
+}

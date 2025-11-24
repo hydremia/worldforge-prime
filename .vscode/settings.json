@@ -1,0 +1,13 @@
+{
+  // Make it obvious which folder you're in
+  "window.title": "${activeEditorShort} — ${rootName} [${folderPath}]",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "editor.formatOnSave": true,
+  "typescript.tsserver.log": "off"
+}

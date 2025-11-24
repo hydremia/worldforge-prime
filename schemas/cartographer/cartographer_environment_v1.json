@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "EnvironmentProfile",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "cartographer.environment.v1"
+    },
+    "biome": {
+      "type": "string"
+    },
+    "terrain": {
+      "type": "string"
+    },
+    "climate": {
+      "type": "object",
+      "properties": {
+        "band": {
+          "type": "string"
+        },
+        "modifiers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "band"
+      ]
+    },
+    "elevation": {
+      "type": "integer"
+    },
+    "hazard": {
+      "type": "integer"
+    },
+    "magicSaturation": {
+      "type": "number"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "biome",
+    "terrain",
+    "climate",
+    "elevation",
+    "hazard"
+  ]
+}

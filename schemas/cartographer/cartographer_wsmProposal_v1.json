@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WSMUpdateProposal",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "cartographer.wsmProposal.v1"
+    },
+    "proposalId": {
+      "type": "string"
+    },
+    "worldId": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "nodesAdded": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nodesUpdated": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nodesRemoved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "boundaryChanges": {
+      "type": "object"
+    },
+    "adjacencyChanges": {
+      "type": "object"
+    },
+    "mapMetadata": {
+      "type": "object"
+    },
+    "confidenceSummary": {
+      "type": "object"
+    },
+    "createdAt": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "proposalId",
+    "worldId",
+    "source",
+    "createdAt"
+  ]
+}

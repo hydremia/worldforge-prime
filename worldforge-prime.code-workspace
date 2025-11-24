@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "window.title": "${activeEditorShort} — Worldforge Prime [${folderPath}]",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false
+  }
+}

@@ -1,0 +1,33 @@
+name = "worldforge-cartographer"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "WF_CARTO_NODES"
+id = "aa5db73c89e040a7b36d355815d6bd41"
+
+[[kv_namespaces]]
+binding = "WF_CARTO_WORLD_INDEX"
+id = "190c92b8a5c148e79cab72cf79399fca"
+
+[[kv_namespaces]]
+binding = "WF_CARTO_ADJACENCY"
+id = "1b40a6930b4b47d7b6ac156fe766fcc3"
+
+[[kv_namespaces]]
+binding = "WF_CARTO_MAP_METADATA"
+id = "01ea81f77b58469b9e0bcbad29803b0f"
+
+[[kv_namespaces]]
+binding = "WF_CARTO_SESSIONS_ARCHIVE"
+id = "effa01b70e9242b9bc4a45462426401e"
+
+# Durable Objects
+[[durable_objects.bindings]]
+name = "CARTO_SESSIONS"
+class_name = "CartographerSessionDO"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CartographerSessionDO"]
+
