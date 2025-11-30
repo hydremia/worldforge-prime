@@ -6,12 +6,15 @@ export interface Env {
   WF_CARTO_ADJACENCY: KVNamespace;
   WF_CARTO_MAP_METADATA: KVNamespace;
   WF_CARTO_SESSIONS_ARCHIVE: KVNamespace;
+
+  CARTO_SESSIONS: DurableObjectNamespace;
 }
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     return routeRequest(request, env, ctx);
-  }
+  },
 };
 
 export { CartographerSessionDO } from './sessionEngine';
+
