@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "types": [
+            "@cloudflare/workers-types"
+        ],
+        "resolveJsonModule": true,
+        "allowJs": false,
+        "noEmit": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

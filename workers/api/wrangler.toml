@@ -1,0 +1,20 @@
+name = "worldforge-api-worker"
+main = "src/index.ts"
+account_id = "f2265fe403ecf06305ce5b1d3de3ce6d"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "CAPSULES"
+id = "2c5e3952ed534b4f9c6947da97df5c35"
+preview_id = "91d2ba9524c841a39b1b6b31ec6a0af0"
+
+[dev]
+port = 8787
+local_protocol = "http"
+
+
+# If you want to bind to a specific route in a zone:
+# [routes]
+# pattern = "api.yourdomain.com/*"
+# zone_name = "yourdomain.com"
