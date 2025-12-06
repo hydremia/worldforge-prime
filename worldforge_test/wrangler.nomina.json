@@ -1,0 +1,11 @@
+{
+  "name": "worldforge-prime-nomina",
+  "main": "workers/nomina/src/index.ts",
+  "compatibility_date": "2025-11-23",
+  "kv_namespaces": [
+    {
+      "binding": "NOMINA_KV",
+      "id": "483bec51b0d249279cb80d2ee26d5ce1"
+    }
+  ]
+}

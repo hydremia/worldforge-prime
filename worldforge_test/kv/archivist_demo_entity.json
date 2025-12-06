@@ -1,0 +1,24 @@
+{
+  "id": "demo_npc_001",
+  "entityType": "npc",
+  "name": "Archivist Demo NPC",
+  "summary": "A placeholder NPC used to validate the Archivist Worker KV pipeline.",
+  "body": "This NPC exists solely to prove that KV write/read via the Archivist Worker is functioning correctly.",
+  "tags": [
+    "demo",
+    "archivist",
+    "npc"
+  ],
+  "timeline": {
+    "era": "test-era",
+    "year": 1494,
+    "relative": "early integration"
+  },
+  "metadata": {
+    "source": "user",
+    "sourceRef": "kv/bootstrap",
+    "createdAt": "2025-11-23T00:00:00.000Z",
+    "updatedAt": "2025-11-23T00:00:00.000Z",
+    "version": "v1.0.0"
+  }
+}

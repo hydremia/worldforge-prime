@@ -1,0 +1,590 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Worldforge Prime \u2014 Nomina Worker API",
+    "version": "1.0.0",
+    "description": "HTTP interface for the Worldforge Prime Nomina worker. Provides name generation, culture readiness, and debug utilities over KV-backed templates and seed corpora."
+  },
+  "servers": [
+    {
+      "url": "https://worldforge-prime-nomina.hydremia.workers.dev",
+      "description": "Production Nomina worker"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "description": "Unauthenticated liveness probe for the Nomina worker.",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Worker is healthy.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "worker": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "worker"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nomina/generate": {
+      "post": {
+        "summary": "Generate names",
+        "description": "Generates one or more names for a given species, culture, and gender using KV-backed templates and seeds.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Names generated successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GenerateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing or invalid parameters.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid NOMINA_TOKEN.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal generation error (e.g. missing template, malformed pattern).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nomina/cultures": {
+      "get": {
+        "summary": "List cultures",
+        "description": "Returns a list of known species/culture pairs and their readiness status based on KV templates and seeds.",
+        "responses": {
+          "200": {
+            "description": "Culture readiness snapshot.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cultures": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CultureStatus"
+                      }
+                    }
+                  },
+                  "required": [
+                    "cultures"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid NOMINA_TOKEN.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nomina/debug/culture": {
+      "post": {
+        "summary": "Debug a culture",
+        "description": "Inspects a single species/culture pair, returning template metadata, seed sample, and a generated sample batch.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DebugCultureRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Debug snapshot for the requested culture.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DebugCultureResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing species or culture in the request body.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid NOMINA_TOKEN.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Culture not known or template missing.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nomina/validate": {
+      "post": {
+        "summary": "Validate a name (legacy stub)",
+        "description": "Legacy endpoint retained for compatibility. Currently always returns valid=true.",
+        "deprecated": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ValidateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validation result (currently always true).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidateResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid NOMINA_TOKEN.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nomina/seed/add": {
+      "post": {
+        "summary": "Add seeds for a culture (legacy helper)",
+        "description": "Legacy helper endpoint to append/replace seeds for a single cultureId key. Prefer bulk KV upload in v1.0.",
+        "deprecated": true,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegacySeedAddRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Seeds stored successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "stored": {
+                      "type": "boolean"
+                    },
+                    "cultureId": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "stored",
+                    "cultureId",
+                    "count"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing cultureId or seeds[].",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid NOMINA_TOKEN.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "example": "Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "UUID",
+        "description": "NOMINA_TOKEN secret configured on the Nomina worker. Required for all endpoints except /health."
+      }
+    },
+    "schemas": {
+      "GenerateRequest": {
+        "type": "object",
+        "properties": {
+          "species": {
+            "type": "string",
+            "example": "elf"
+          },
+          "culture": {
+            "type": "string",
+            "example": "high_elf"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female",
+              "neutral"
+            ],
+            "default": "neutral"
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 10
+          },
+          "rarityBias": {
+            "type": "string",
+            "enum": [
+              "common",
+              "uncommon",
+              "rare",
+              "mixed"
+            ],
+            "default": "mixed"
+          },
+          "uniquenessScope": {
+            "type": "string",
+            "enum": [
+              "batch",
+              "culture"
+            ],
+            "default": "batch"
+          }
+        },
+        "required": [
+          "species",
+          "culture"
+        ]
+      },
+      "GenerateResponse": {
+        "type": "object",
+        "properties": {
+          "species": {
+            "type": "string"
+          },
+          "culture": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          },
+          "names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rarityBias": {
+            "type": "string"
+          },
+          "uniquenessScope": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "species",
+          "culture",
+          "gender",
+          "count",
+          "names",
+          "rarityBias",
+          "uniquenessScope"
+        ]
+      },
+      "CultureStatus": {
+        "type": "object",
+        "properties": {
+          "species": {
+            "type": "string"
+          },
+          "culture": {
+            "type": "string"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "missing_template",
+              "missing_seeds"
+            ]
+          },
+          "seedCount": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "species",
+          "culture",
+          "status",
+          "seedCount"
+        ]
+      },
+      "DebugCultureRequest": {
+        "type": "object",
+        "properties": {
+          "species": {
+            "type": "string"
+          },
+          "culture": {
+            "type": "string"
+          },
+          "sampleSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+          }
+        },
+        "required": [
+          "species",
+          "culture"
+        ]
+      },
+      "DebugCultureResponse": {
+        "type": "object",
+        "properties": {
+          "species": {
+            "type": "string"
+          },
+          "culture": {
+            "type": "string"
+          },
+          "templateVersion": {
+            "type": "string"
+          },
+          "patternSets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "seedCount": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "seedSample": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "generatedSample": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "species",
+          "culture",
+          "templateVersion",
+          "patternSets",
+          "seedCount",
+          "seedSample",
+          "generatedSample"
+        ]
+      },
+      "ValidateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "cultureId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "ValidateResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "cultureId": {
+            "type": "string",
+            "nullable": true
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "valid",
+          "reasons"
+        ]
+      },
+      "LegacySeedAddRequest": {
+        "type": "object",
+        "properties": {
+          "cultureId": {
+            "type": "string"
+          },
+          "seeds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "cultureId",
+          "seeds"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    }
+  }
+}

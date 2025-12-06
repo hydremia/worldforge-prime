@@ -1,0 +1,117 @@
+{
+  "version": "v1.0",
+  "species": "dragonborn",
+  "culture": "metallic",
+  "aliases": [
+    "Metallic Dragonborn"
+  ],
+  "tags": [
+    "faerun",
+    "dragonborn",
+    "metallic"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "met",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Al",
+          "Bel",
+          "Dor",
+          "Fen",
+          "Gal",
+          "Hel",
+          "Kor",
+          "Mar"
+        ],
+        "core": [
+          "adan",
+          "vyr",
+          "dell",
+          "mir",
+          "thor",
+          "lan",
+          "zen"
+        ],
+        "suffix": [
+          "on",
+          "ar",
+          "en",
+          "ir"
+        ],
+        "family_core": [
+          "Brightscale",
+          "Goldenshard",
+          "Ironsong",
+          "Highflare",
+          "Radiantbreath"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "ll",
+      "nd",
+      "rn"
+    ],
+    "forbiddenClusters": [
+      "ppp"
+    ],
+    "vowelBias": "medium",
+    "notes": "Metallic names are smoother, noble, and resonant."
+  },
+  "rarity": {
+    "common": 0.65,
+    "uncommon": 0.25,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Aladan",
+      "Kormir"
+    ],
+    "female": [
+      "Fenzir",
+      "Marlen"
+    ],
+    "neutral": [
+      "Galvyr"
+    ],
+    "family": [
+      "Brightscale",
+      "Radiantbreath"
+    ]
+  }
+}

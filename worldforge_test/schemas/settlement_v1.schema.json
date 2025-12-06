@@ -1,0 +1,314 @@
+{
+  "$id": "https://worldforge/schemas/settlement_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Settlement v1",
+  "type": "object",
+  "required": [
+    "settlement_id",
+    "name",
+    "kind",
+    "region_id",
+    "population",
+    "demographics",
+    "government",
+    "points_of_interest",
+    "meta"
+  ],
+  "properties": {
+    "settlement_id": {
+      "type": "string",
+      "description": "Unique ID for this settlement."
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Settlement name."
+    },
+
+    "kind": {
+      "type": "string",
+      "description": "Classification of settlement size/type.",
+      "enum": [
+        "hamlet",
+        "village",
+        "town",
+        "city",
+        "metropolis",
+        "fortress",
+        "outpost",
+        "encampment",
+        "other"
+      ]
+    },
+
+    "region_id": {
+      "type": "string",
+      "description": "Region or province this settlement belongs to."
+    },
+
+    "parent_settlement_id": {
+      "type": ["string", "null"],
+      "description": "Optional parent (e.g., district group hub or capital)."
+    },
+
+    "coordinates": {
+      "type": "object",
+      "description": "Optional map coordinates for Cartographer.",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": ["number", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "population": {
+      "type": "object",
+      "required": ["estimate"],
+      "properties": {
+        "estimate": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Rough population estimate."
+        },
+        "notes": {
+          "type": ["string", "null"],
+          "description": "Optional extra detail about population variability."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "demographics": {
+      "type": "object",
+      "description": "Species and culture composition.",
+      "properties": {
+        "species_breakdown": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label", "percent"],
+            "properties": {
+              "label": { "type": "string" },
+              "percent": { "type": "number" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "cultural_groups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["label"],
+            "properties": {
+              "label": { "type": "string" },
+              "notes": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "government": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "E.g., council, monarchy, theocracy, guild rule, etc."
+        },
+        "ruling_body_name": {
+          "type": ["string", "null"],
+          "description": "Name of the council/house/order/etc."
+        },
+        "key_officials": {
+          "type": "array",
+          "description": "Important NPCs by ID.",
+          "items": {
+            "type": "object",
+            "required": ["character_id"],
+            "properties": {
+              "character_id": { "type": "string" },
+              "role_title": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "stability": {
+          "type": ["string", "null"],
+          "description": "Optional loose indicator: stable, tense, collapsing, occupied, etc."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "economy": {
+      "type": "object",
+      "description": "Basic economic profile.",
+      "properties": {
+        "primary_industries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notable_exports": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notable_imports": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "wealth_level": {
+          "type": ["string", "null"],
+          "description": "Relative wealth: poor, modest, prosperous, rich, etc."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "factions_present": {
+      "type": "array",
+      "description": "Factions with notable presence here.",
+      "items": {
+        "type": "object",
+        "required": ["faction_id"],
+        "properties": {
+          "faction_id": { "type": "string" },
+          "influence_level": {
+            "type": ["string", "null"],
+            "description": "e.g., minor, moderate, dominant, covert."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "districts": {
+      "type": "array",
+      "description": "Named districts/quarters/wards.",
+      "items": {
+        "type": "object",
+        "required": ["district_id", "name"],
+        "properties": {
+          "district_id": { "type": "string" },
+          "name": { "type": "string" },
+          "role": {
+            "type": ["string", "null"],
+            "description": "E.g., market, temple ward, docks, noble quarter."
+          },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "points_of_interest": {
+      "type": "array",
+      "description": "Key locations inside or immediately around the settlement.",
+      "items": {
+        "type": "object",
+        "required": ["location_id"],
+        "properties": {
+          "location_id": { "type": "string" },
+          "label": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "features": {
+      "type": "object",
+      "description": "Environmental or structural traits.",
+      "properties": {
+        "terrain_context": {
+          "type": ["string", "null"],
+          "description": "E.g., coastal, river junction, cliffside, desert oasis."
+        },
+        "defenses": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "notable_features": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "hooks": {
+      "type": "array",
+      "description": "Rumors, tensions, and hooks rooted in this settlement.",
+      "items": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_factions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_npcs": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "description": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": ["string", "null"],
+          "description": "Short 1–3 sentence summary."
+        },
+        "detail": {
+          "type": ["string", "null"],
+          "description": "Long-form descriptive text."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["tier", "readiness"],
+      "properties": {
+        "tier": {
+          "type": "integer",
+          "description": "1=user/campaign canon, 2=world canon, 3=improv/draft."
+        },
+        "readiness": {
+          "type": "string",
+          "enum": ["draft", "refined", "final"]
+        },
+        "style_profile": {
+          "type": ["string", "null"],
+          "description": "Optional style/aesthetic label used when generating text for this settlement."
+        },
+        "created_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "created_in_campaign": {
+          "type": ["string", "null"],
+          "description": "If this settlement originated from campaign-level improv."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

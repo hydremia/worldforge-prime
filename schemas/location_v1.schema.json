@@ -1,0 +1,285 @@
+{
+  "$id": "https://worldforge/schemas/location_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Location v1",
+  "type": "object",
+  "required": [
+    "location_id",
+    "name",
+    "category",
+    "region_id",
+    "meta"
+  ],
+  "properties": {
+    "location_id": {
+      "type": "string",
+      "description": "Unique ID for this specific location/point of interest."
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Location name."
+    },
+
+    "category": {
+      "type": "string",
+      "description": "General type of location.",
+      "enum": [
+        "tavern",
+        "inn",
+        "shop",
+        "temple",
+        "shrine",
+        "market_stall",
+        "guard_post",
+        "gate",
+        "bridge",
+        "plaza",
+        "alley",
+        "house",
+        "manor",
+        "farm",
+        "camp",
+        "cave",
+        "ruin",
+        "dungeon_entry",
+        "natural_feature",
+        "landmark",
+        "other"
+      ]
+    },
+
+    "region_id": {
+      "type": "string",
+      "description": "Region the location resides in."
+    },
+
+    "settlement_id": {
+      "type": ["string", "null"],
+      "description": "Settlement this location belongs to, if any."
+    },
+
+    "coordinates": {
+      "type": "object",
+      "description": "Optional map coordinates for Cartographer.",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": ["number", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "environment": {
+      "type": "object",
+      "description": "Environmental/context tags for this location.",
+      "properties": {
+        "terrain_context": {
+          "type": ["string", "null"],
+          "description": "E.g., street-level, rooftop, underground, cliffside, forest clearing, etc."
+        },
+        "light_level": {
+          "type": ["string", "null"],
+          "description": "E.g., bright, dim, dark, variable."
+        },
+        "noise_level": {
+          "type": ["string", "null"],
+          "description": "E.g., quiet, busy, chaotic."
+        },
+        "safety_level": {
+          "type": ["string", "null"],
+          "description": "E.g., safe, tense, dangerous, lawless."
+        },
+        "hazard_profile": {
+          "type": "array",
+          "description": "List of hazard categories present at this location (e.g., environmental, structural, magical, social, travel).",
+          "items": { "type": "string" }
+        },
+        "travel_difficulty": {
+          "type": ["string", "number"],
+          "description": "Baseline travel difficulty for this location. Accepts an enum (low, standard, high, extreme) or 0–5 numeric scale."
+        },
+        "magic_stability": {
+          "type": "string",
+          "description": "Overall magic stability at this location.",
+          "enum": ["inert", "stable", "flickering", "volatile"]
+        },
+        "planar_influence": {
+          "type": "string",
+          "description": "Level of planar influence at this location.",
+          "enum": ["none", "mild", "active", "severe"]
+        },
+        "encounter_density": {
+          "type": "string",
+          "description": "Typical encounter frequency at this location.",
+          "enum": ["low", "medium", "high", "extreme"]
+        },
+        "weather_band": {
+          "type": "string",
+          "description": "Representative weather band or climate tag for this location (e.g., calm, rainy, storm‑prone, arid)."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "owners_and_staff": {
+      "type": "array",
+      "description": "Important NPCs who own or work here.",
+      "items": {
+        "type": "object",
+        "required": ["character_id"],
+        "properties": {
+          "character_id": { "type": "string" },
+          "role": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "factions_present": {
+      "type": "array",
+      "description": "Factions with a notable presence or stake here.",
+      "items": {
+        "type": "object",
+        "required": ["faction_id"],
+        "properties": {
+          "faction_id": { "type": "string" },
+          "influence_type": {
+            "type": ["string", "null"],
+            "description": "e.g., owner, protector, extortion, covert cell."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "usage": {
+      "type": "object",
+      "description": "How the location is typically used.",
+      "properties": {
+        "primary_function": {
+          "type": ["string", "null"],
+          "description": "e.g., lodging, worship, trade, meeting place, hideout."
+        },
+        "secondary_functions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "access_level": {
+          "type": ["string", "null"],
+          "description": "e.g., public, restricted, secret, invitation_only."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "features": {
+      "type": "object",
+      "description": "Physical or magical traits that matter in play.",
+      "properties": {
+        "notable_features": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hazards": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "hidden_elements": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "hooks": {
+      "type": "array",
+      "description": "Rumors, secrets, or situations tied to this location.",
+      "items": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_factions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_npcs": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "description": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": ["string", "null"],
+          "description": "Short, table-usage description."
+        },
+        "detail": {
+          "type": ["string", "null"],
+          "description": "Long-form descriptive text and lore."
+        },
+        "sensory_notes": {
+          "type": "object",
+          "description": "Quick hooks for narration.",
+          "properties": {
+            "sight": { "type": ["string", "null"] },
+            "sound": { "type": ["string", "null"] },
+            "smell": { "type": ["string", "null"] },
+            "touch": { "type": ["string", "null"] },
+            "taste": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["tier", "readiness"],
+      "properties": {
+        "tier": {
+          "type": "integer",
+          "description": "1=user/campaign canon, 2=world canon, 3=improv/draft."
+        },
+        "readiness": {
+          "type": "string",
+          "enum": ["draft", "refined", "final"]
+        },
+        "created_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "created_in_campaign": {
+          "type": ["string", "null"],
+          "description": "If generated inside a specific campaign capsule."
+        },
+        "style_profile": {
+          "type": ["string", "null"],
+          "description": "Optional style/aesthetic label used for prompts."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

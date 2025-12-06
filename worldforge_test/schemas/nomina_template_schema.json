@@ -1,0 +1,185 @@
+// schemas/nomina_template.schema.json — Prime Nomina Template Schema (v1.0)
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldforge-prime/schemas/nomina_template.schema.json",
+  "title": "Worldforge Prime Nomina Template",
+  "description": "Schema for cultural naming templates used by the Prime Nomina Worker.",
+  "type": "object",
+  "required": ["id", "world", "species", "culture", "patternSets"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable ID for this template (e.g. fr.nomina.elf_high.core)."
+    },
+    "world": {
+      "type": "string",
+      "description": "World key this template belongs to (e.g. FR, EB, HB_custom)."
+    },
+    "species": {
+      "type": "string",
+      "description": "Primary species or lineage (e.g. elf, dwarf, human, tiefling)."
+    },
+    "subspecies": {
+      "type": ["string", "null"],
+      "description": "Optional subspecies or subculture (e.g. high, wood, drow)."
+    },
+    "culture": {
+      "type": "string",
+      "description": "Cultural or linguistic grouping (e.g. chondathan, calishite, dalelands)."
+    },
+    "use_case": {
+      "type": "string",
+      "description": "Intended use case (personal_name, family_name, byname, epithet, place_name, other)."
+    },
+    "gender_mode": {
+      "type": "string",
+      "description": "How gender is handled in this template.",
+      "enum": [
+        "none",          
+        "binary",        
+        "multi",         
+        "cultural"       
+      ],
+      "default": "none"
+    },
+    "rarity_profile": {
+      "type": "object",
+      "description": "Relative frequencies for common/uncommon/rare names.",
+      "additionalProperties": false,
+      "properties": {
+        "common": { "type": "number", "minimum": 0 },
+        "uncommon": { "type": "number", "minimum": 0 },
+        "rare": { "type": "number", "minimum": 0 }
+      }
+    },
+    "collision_scope": {
+      "type": "string",
+      "description": "Scope used to avoid over-frequent collisions.",
+      "enum": [
+        "world",          
+        "culture",        
+        "campaign",       
+        "party",          
+        "none"            
+      ],
+      "default": "culture"
+    },
+    "orthography": {
+      "type": "object",
+      "description": "Optional constraints on letters, digraphs, capitalization, and diacritics.",
+      "additionalProperties": false,
+      "properties": {
+        "allowed_chars": {
+          "type": "string",
+          "description": "Character whitelist (regex-style class, e.g. a-zA-Z' -)."
+        },
+        "forbidden_sequences": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Sequences that must not appear in generated names."
+        },
+        "capitalization": {
+          "type": "string",
+          "description": "How capitalization is applied.",
+          "enum": [
+            "first_letter",   
+            "all_caps",       
+            "lowercase",      
+            "title_case",     
+            "as_generated"    
+          ],
+          "default": "first_letter"
+        }
+      }
+    },
+    "syllableSets": {
+      "type": "object",
+      "description": "Building blocks for syllables/segments.",
+      "additionalProperties": false,
+      "properties": {
+        "onsets": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Valid starting consonant clusters (can be empty string)."
+        },
+        "nuclei": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Vowel clusters / syllabic cores."
+        },
+        "codas": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Valid ending consonant clusters (can be empty string)."
+        },
+        "extras": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Optional additional segments (e.g. honorifics, particles)."
+        }
+      }
+    },
+    "patternSets": {
+      "type": "array",
+      "description": "Weighted pattern groups used to assemble full names.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "weight", "pattern"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Local pattern identifier (e.g. core_simple, long_form)."
+          },
+          "weight": {
+            "type": "number",
+            "description": "Relative weight for pattern selection.",
+            "minimum": 0
+          },
+          "gender": {
+            "type": ["string", "null"],
+            "description": "Optional gender tag for this pattern (if gendered culture)."
+          },
+          "pattern": {
+            "type": "string",
+            "description": "Tokenized pattern string, e.g. ONSET+NUCLEUS+CODA, or more explicit markers.",
+            "examples": [
+              "ONSET+NUCLEUS+CODA",
+              "ONSET+NUCLEUS+NUCLEUS+CODA"
+            ]
+          },
+          "constraints": {
+            "type": "object",
+            "description": "Optional additional constraints.",
+            "additionalProperties": false,
+            "properties": {
+              "min_length": { "type": "integer", "minimum": 1 },
+              "max_length": { "type": "integer", "minimum": 1 },
+              "forbid_suffixes": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "require_suffixes": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Optional example names for QA and GPT guidance.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Human-readable notes about this naming culture/template."
+    }
+  }
+}

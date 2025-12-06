@@ -1,0 +1,118 @@
+{
+  "version": "v1.0",
+  "species": "gnome",
+  "culture": "forest_gnome",
+  "aliases": [
+    "Green Gnome"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "gnome",
+    "forest_gnome"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "leaf",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Fae",
+          "Li",
+          "Si",
+          "Ra",
+          "Ti",
+          "Be",
+          "Zo",
+          "Ka"
+        ],
+        "core": [
+          "wyn",
+          "lin",
+          "ri",
+          "mo",
+          "fa",
+          "no",
+          "bel",
+          "zan"
+        ],
+        "suffix": [
+          "a",
+          "el",
+          "en",
+          "in"
+        ],
+        "family_core": [
+          "Nackle",
+          "Daergel",
+          "Folkor",
+          "Timbers",
+          "Murnig"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "ll",
+      "nn",
+      "zz"
+    ],
+    "forbiddenClusters": [
+      "rrr"
+    ],
+    "vowelBias": "high",
+    "notes": "Forest gnome names are whimsical, nature-rooted."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.84
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Fawyn",
+      "Zorin"
+    ],
+    "female": [
+      "Belira"
+    ],
+    "neutral": [
+      "Rimo"
+    ],
+    "family": [
+      "Nackle",
+      "Timbers"
+    ]
+  }
+}

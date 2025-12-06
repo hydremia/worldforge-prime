@@ -1,0 +1,128 @@
+{
+  "version": "v1.0",
+  "species": "tiefling",
+  "culture": "abyssal_variant",
+  "aliases": [
+    "Abyssal-blooded"
+  ],
+  "tags": [
+    "faerun",
+    "tiefling",
+    "abyssal"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "abyss",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Gra",
+          "Vor",
+          "Xal",
+          "Dra",
+          "Rha",
+          "Zho",
+          "Tal",
+          "Kor",
+          "Izh"
+        ],
+        "core": [
+          "gath",
+          "zun",
+          "rakh",
+          "thol",
+          "vrez",
+          "mor",
+          "draz",
+          "shin"
+        ],
+        "suffix": [
+          "ak",
+          "or",
+          "ul",
+          "esh",
+          "ir"
+        ],
+        "family_core": [
+          "Bloodchant",
+          "Voidscar",
+          "Abyssrend",
+          "Shadowbleed",
+          "Gravehollow"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "zh",
+      "xk",
+      "dr",
+      "gh",
+      "rh"
+    ],
+    "forbiddenClusters": [
+      "uuu"
+    ],
+    "vowelBias": "low",
+    "notes": "Abyssal-influenced names lean into chaotic, harsh, and broken phonemes."
+  },
+  "rarity": {
+    "common": 0.55,
+    "uncommon": 0.3,
+    "rare": 0.15
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 7,
+    "similarityThreshold": 0.8
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Requires collision sweeps to avoid overlap with orcish/drow forms."
+  },
+  "examples": {
+    "male": [
+      "Gragath",
+      "Xalrakh",
+      "Dramor"
+    ],
+    "female": [
+      "Zhoesh",
+      "Talul",
+      "Rhamor"
+    ],
+    "neutral": [
+      "Korvrez",
+      "Izhmor"
+    ],
+    "family": [
+      "Bloodchant",
+      "Voidscar"
+    ]
+  }
+}

@@ -1,0 +1,298 @@
+{
+  "$id": "https://worldforge/schemas/character_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Character v1 (PC & NPC)",
+  "type": "object",
+  "required": ["character_id", "role", "identity", "rules_profile", "abilities", "derived"],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "description": "Unique ID for this character."
+    },
+    "role": {
+      "type": "string",
+      "enum": ["pc", "npc"]
+    },
+    "npc_detail_level": {
+      "type": ["string", "null"],
+      "enum": ["compact", "full", null],
+      "description": "For NPCs: 'compact' or 'full'; null or omitted for PCs."
+    },
+
+    "identity": {
+      "type": "object",
+      "required": ["name", "level"],
+      "properties": {
+        "name": { "type": "string" },
+        "species": { "type": ["string", "null"] },
+        "class": { "type": ["string", "null"] },
+        "subclass": { "type": ["string", "null"] },
+        "level": { "type": "integer", "minimum": 1 },
+        "background": { "type": ["string", "null"] },
+        "pronouns": { "type": ["string", "null"] },
+        "alignment": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "rules_profile": {
+      "type": "object",
+      "required": ["ruleset"],
+      "properties": {
+        "ruleset": { "type": "string", "examples": ["5.5e"] },
+        "advancement_type": {
+          "type": ["string", "null"],
+          "enum": ["milestone", "xp", null]
+        },
+        "xp": { "type": ["integer", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "abilities": {
+      "type": "object",
+      "required": ["str", "dex", "con", "int", "wis", "cha"],
+      "properties": {
+        "str": { "type": "integer" },
+        "dex": { "type": "integer" },
+        "con": { "type": "integer" },
+        "int": { "type": "integer" },
+        "wis": { "type": "integer" },
+        "cha": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+
+    "derived": {
+      "type": "object",
+      "required": ["proficiency_bonus", "max_hp", "current_hp", "ac", "speed"],
+      "properties": {
+        "proficiency_bonus": { "type": "integer" },
+        "max_hp": { "type": "integer" },
+        "current_hp": { "type": "integer" },
+        "temporary_hp": { "type": ["integer", "null"] },
+        "ac": { "type": "integer" },
+        "speed": { "type": "integer" },
+        "initiative_mod": { "type": ["integer", "null"] },
+        "hit_dice": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+
+    "skills": {
+      "type": "object",
+      "description": "Map of skill name → { mod, proficient, expertise }.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "mod": { "type": "integer" },
+          "proficient": { "type": "boolean" },
+          "expertise": { "type": ["boolean", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "saving_throws": {
+      "type": "object",
+      "description": "Per-ability saving throw profile.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "mod": { "type": "integer" },
+          "proficient": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "features": {
+      "type": "object",
+      "properties": {
+        "class_features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "uses": { "type": ["integer", "null"] },
+              "recharge": { "type": ["string", "null"] },
+              "notes": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "racial_features": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "background_features": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "resources": {
+      "type": "object",
+      "properties": {
+        "spell_slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "max": { "type": "integer" },
+              "current": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "class_pools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "max", "current"],
+            "properties": {
+              "name": { "type": "string" },
+              "max": { "type": "integer" },
+              "current": { "type": "integer" },
+              "recharge": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "spells": {
+      "type": "object",
+      "properties": {
+        "spellcasting_ability": { "type": ["string", "null"] },
+        "save_dc": { "type": ["integer", "null"] },
+        "attack_bonus": { "type": ["integer", "null"] },
+        "known_spells": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "level"],
+            "properties": {
+              "name": { "type": "string" },
+              "level": { "type": "integer" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "equipment": {
+      "type": "object",
+      "properties": {
+        "weapons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "attack_bonus": { "type": ["integer", "null"] },
+              "damage": { "type": ["string", "null"] },
+              "properties": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "armor": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "base_ac": { "type": ["integer", "null"] },
+              "calculated_ac": { "type": ["integer", "null"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "inventory": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "qty": { "type": ["number", "null"] }
+            },
+            "additionalProperties": false
+          }
+        },
+        "coins": {
+          "type": "object",
+          "properties": {
+            "pp": { "type": ["integer", "null"] },
+            "gp": { "type": ["integer", "null"] },
+            "sp": { "type": ["integer", "null"] },
+            "cp": { "type": ["integer", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "conditions": {
+      "type": "object",
+      "properties": {
+        "exhaustion": { "type": ["integer", "null"] },
+        "active_conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "story": {
+      "type": "object",
+      "properties": {
+        "short_bio": { "type": ["string", "null"] },
+        "goals": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "bonds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "flaws": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ideals": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "lineage": {
+      "type": "object",
+      "properties": {
+        "tier": { "type": ["integer", "null"] },
+        "created_in_campaign": { "type": ["string", "null"] },
+        "created_at": { "type": ["string", "null"], "format": "date-time" },
+        "updated_at": { "type": ["string", "null"], "format": "date-time" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

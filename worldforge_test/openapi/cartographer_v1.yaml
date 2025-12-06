@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: Worldforge Cartographer API
+  version: v1.0.0
+servers:
+  - url: https://worldforge-api.example.com
+paths:
+  /cartographer/health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /cartographer/map/session/start:
+    post:
+      summary: Start a map ingestion session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mapName:
+                  type: string
+                worldId:
+                  type: string
+                sourceType:
+                  type: string
+                description:
+                  type: string
+      responses:
+        '201':
+          description: Session created
+  /cartographer/node/{nodeId}/environment:
+    get:
+      summary: Get environment for a node
+      parameters:
+        - in: path
+          name: nodeId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Environment profile
+          content:
+            application/json:
+              schema:
+                $ref: '../schemas/cartographer/cartographer_environment_v1.json'

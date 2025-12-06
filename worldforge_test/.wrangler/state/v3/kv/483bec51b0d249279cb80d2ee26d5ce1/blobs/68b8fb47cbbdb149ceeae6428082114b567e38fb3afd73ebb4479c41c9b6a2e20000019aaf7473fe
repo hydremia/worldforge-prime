@@ -1,0 +1,108 @@
+{
+  "version": "v1.0",
+  "species": "human",
+  "culture": "uthgardt",
+  "aliases": [],
+  "tags": [
+    "faerun",
+    "human",
+    "uthgardt"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "default",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Bar",
+          "Dor",
+          "Fen",
+          "Gor",
+          "Har",
+          "Var"
+        ],
+        "core": [
+          "grim",
+          "thar",
+          "mor",
+          "vak",
+          "rag"
+        ],
+        "suffix": [
+          "ar",
+          "en",
+          "ok"
+        ],
+        "family_core": [
+          "Bargrim",
+          "Harvak",
+          "Fenmor"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "th",
+      "ar",
+      "an",
+      "el",
+      "or"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "medium",
+    "notes": "uthgardt human naming patterns."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "BarGrim"
+    ],
+    "female": [
+      "DorThar"
+    ],
+    "neutral": [
+      "BarRag"
+    ],
+    "family": [
+      "Bargrim",
+      "Harvak"
+    ]
+  }
+}

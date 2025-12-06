@@ -42,12 +42,17 @@ Only minimal rules remain in the active instruction block. Deep logic lives in k
 
 ## 1.3 Capsule-Persistent Preferences
 Capsules store long-term defaults, including:
-- Expression settings (tone, density, aesthetics)
-- Ruleset mode (RAW, Cinematic, OSR, RAI)
-- Safety boundaries
-- Naming conventions
-- UX style
-- Chosen world setting (Casmoran by default)
+ - Expression settings (tone, density, aesthetics)  
+   - **Tone**: one of **heroic**, **gritty**, **grounded**, **mythic**, **cozy**, **noir**, or **default**. These canonical values map to descriptive tone requests from DM and Creative tools (e.g., “epic” maps to **heroic**, “investigative” maps to **noir**).  
+   - **Density**: one of **lean**, **balanced**, or **lush**. DM descriptors (Sparse, Standard, Rich/Cinematic) translate to these values (`Sparse` → **lean**, `Standard` → **balanced**, `Rich/Cinematic` → **lush**).  
+   - **Pacing**: **fast**, **normal**, or **slow**.  
+   - **Cinematic**: **low**, **medium**, or **high**, controlling how narrative‑first vs mechanical the output should be. **High** corresponds to the DM’s Cinematic rule mode.  
+   - **Aesthetics** and other stylistic variables are stored as plain strings.  
+ - Ruleset mode (RAW, Cinematic, OSR, RAI) – captured separately from the `cinematic` intensity above.  
+ - Safety boundaries  
+ - Naming conventions  
+ - UX style  
+ - Chosen world setting (Casmoran by default)
 
 ---
 # 2. AUTOMATIC TOOLBOX SELECTION
@@ -233,6 +238,8 @@ States:
 - OPS
 
 Transitions must preserve tone, continuity, and user intent.
+
+> **Alignment Note (Casmoran v1.0‑A):** The runtime capsule schema’s `state.activeScene` field uses a simpler set of values—`exploration`, `combat`, `social`, and `downtime`—to describe the current narrative context. The Runtime State Machine expands these categories for internal orchestration. When persisting session state into a capsule, Prime should map its internal states to the canonical `activeScene` values: **Travel** and **Idle** map to `exploration`, **DM Active** and **Creative** map to `social` or `exploration` depending on narrative context, **Combat** maps to `combat`, and **Menu/Guide** maps to `downtime`. This mapping enables schema validation without constraining internal state logic.
 
 ---
 # 9. OUTPUT GOVERNANCE

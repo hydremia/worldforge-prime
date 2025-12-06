@@ -1,0 +1,122 @@
+{
+  "version": "v1.0",
+  "species": "dragonborn",
+  "culture": "chromatic",
+  "aliases": [
+    "Chromatic Dragonborn"
+  ],
+  "tags": [
+    "faerun",
+    "dragonborn",
+    "chromatic"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "chrom",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Ar",
+          "Vor",
+          "Zy",
+          "Kar",
+          "Myr",
+          "Tor",
+          "Ska",
+          "Zar",
+          "Ul",
+          "Rha"
+        ],
+        "core": [
+          "gath",
+          "zair",
+          "skar",
+          "vyr",
+          "drax",
+          "thor",
+          "vash",
+          "ruk"
+        ],
+        "suffix": [
+          "as",
+          "ir",
+          "ar",
+          "on",
+          "ath"
+        ],
+        "family_core": [
+          "Flamecoil",
+          "Darkmaw",
+          "Shadowrend",
+          "Icefang",
+          "Blightscale"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "sk",
+      "dr",
+      "vr",
+      "rh"
+    ],
+    "forbiddenClusters": [
+      "aaa"
+    ],
+    "vowelBias": "low",
+    "notes": "Chromatic names are harsher, driven by guttural draconic roots."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.8
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Argath",
+      "Zyvash"
+    ],
+    "female": [
+      "Rhazair",
+      "Myrath"
+    ],
+    "neutral": [
+      "Torvyr"
+    ],
+    "family": [
+      "Shadowrend",
+      "Blightscale"
+    ]
+  }
+}

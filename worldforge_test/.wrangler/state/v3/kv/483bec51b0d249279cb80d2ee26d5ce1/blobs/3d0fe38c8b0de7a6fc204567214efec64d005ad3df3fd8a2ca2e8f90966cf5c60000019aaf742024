@@ -1,0 +1,118 @@
+{
+  "version": "v1.0",
+  "species": "gnome",
+  "culture": "rock_gnome",
+  "aliases": [
+    "Tinker Gnome"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "gnome",
+    "rock_gnome"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "tinker",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Bro",
+          "Fen",
+          "Gar",
+          "Tek",
+          "Zib",
+          "Do",
+          "Vo",
+          "Sa"
+        ],
+        "core": [
+          "bik",
+          "mott",
+          "rin",
+          "nib",
+          "wok",
+          "fal",
+          "tik"
+        ],
+        "suffix": [
+          "in",
+          "ik",
+          "et",
+          "en"
+        ],
+        "family_core": [
+          "Cogwhistle",
+          "Gimlen",
+          "Vonkle",
+          "Sparkspinner",
+          "Ironwhistle"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "nk",
+      "bb",
+      "tt"
+    ],
+    "forbiddenClusters": [
+      "aaa"
+    ],
+    "vowelBias": "low",
+    "notes": "Rock gnome names have mechanical or percussive sounds."
+  },
+  "rarity": {
+    "common": 0.65,
+    "uncommon": 0.25,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Brobik",
+      "Tekrin"
+    ],
+    "female": [
+      "Fenin",
+      "Sabet"
+    ],
+    "neutral": [
+      "Zibnik"
+    ],
+    "family": [
+      "Cogwhistle",
+      "Vonkle"
+    ]
+  }
+}

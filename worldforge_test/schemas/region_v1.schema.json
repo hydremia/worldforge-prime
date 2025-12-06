@@ -1,0 +1,293 @@
+{
+  "$id": "https://worldforge/schemas/region_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Region v1",
+  "type": "object",
+  "required": [
+    "region_id",
+    "name",
+    "kind",
+    "parent_region_id",
+    "biomes",
+    "climate",
+    "meta"
+  ],
+  "properties": {
+    "region_id": {
+      "type": "string",
+      "description": "Unique ID for this region."
+    },
+
+    "name": {
+      "type": "string",
+      "description": "Region name."
+    },
+
+    "kind": {
+      "type": "string",
+      "description": "Scale/type of this region.",
+      "enum": [
+        "continent",
+        "macroregion",
+        "region",
+        "province",
+        "domain",
+        "territory",
+        "wilds",
+        "other"
+      ]
+    },
+
+    "parent_region_id": {
+      "type": ["string", "null"],
+      "description": "Optional parent region (e.g., province inside a macroregion)."
+    },
+
+    "cartography": {
+      "type": "object",
+      "description": "Spatial data for this region.",
+      "properties": {
+        "bounds": {
+          "type": "object",
+          "description": "Optional bounding box or polygon reference.",
+          "properties": {
+            "min_x": { "type": ["number", "null"] },
+            "min_y": { "type": ["number", "null"] },
+            "max_x": { "type": ["number", "null"] },
+            "max_y": { "type": ["number", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "center": {
+          "type": "object",
+          "properties": {
+            "x": { "type": ["number", "null"] },
+            "y": { "type": ["number", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "map_layer_key": {
+          "type": ["string", "null"],
+          "description": "Optional reference to an external map layer or tile key."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "biomes": {
+      "type": "array",
+      "description": "List of biome types present in this region.",
+      "items": { "type": "string" }
+    },
+
+    "climate": {
+      "type": "object",
+      "required": ["summary"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "Short climate description (e.g., temperate coastal, arid plateau)."
+        },
+        "temperature_band": {
+          "type": ["string", "null"],
+          "description": "e.g., cold, cool, temperate, warm, hot."
+        },
+        "precipitation_pattern": {
+          "type": ["string", "null"],
+          "description": "e.g., dry, seasonal rains, heavy rainfall, monsoon."
+        },
+        "seasonal_notes": {
+          "type": ["string", "null"],
+          "description": "Any notable seasonal extremes or patterns."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "terrain": {
+      "type": "object",
+      "description": "Topographical summary.",
+      "properties": {
+        "major_landforms": {
+          "type": "array",
+          "description": "Mountains, plains, plateaus, canyons, etc.",
+          "items": { "type": "string" }
+        },
+        "water_features": {
+          "type": "array",
+          "description": "Rivers, lakes, seas, deltas, etc.",
+          "items": { "type": "string" }
+        },
+        "natural_landmarks": {
+          "type": "array",
+          "description": "Named features; cross-link to locations where possible.",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "adjacency": {
+      "type": "object",
+      "description": "Region adjacency and connectivity.",
+      "properties": {
+        "adjacent_region_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "primary_routes": {
+          "type": "array",
+          "description": "High-level routes in/out of the region.",
+          "items": {
+            "type": "object",
+            "required": ["label"],
+            "properties": {
+              "label": { "type": "string" },
+              "from_region_id": { "type": ["string", "null"] },
+              "to_region_id": { "type": ["string", "null"] },
+              "notes": { "type": ["string", "null"] }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "settlements": {
+      "type": "array",
+      "description": "Settlements contained within this region.",
+      "items": {
+        "type": "object",
+        "required": ["settlement_id"],
+        "properties": {
+          "settlement_id": { "type": "string" },
+          "role": {
+            "type": ["string", "null"],
+            "description": "e.g., capital, trade hub, holy site, border town."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "faction_influence": {
+      "type": "array",
+      "description": "Factions significantly active in this region.",
+      "items": {
+        "type": "object",
+        "required": ["faction_id"],
+        "properties": {
+          "faction_id": { "type": "string" },
+          "influence_level": {
+            "type": ["string", "null"],
+            "description": "e.g., minor, moderate, dominant, contested."
+          },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "hazards": {
+      "type": "object",
+      "description": "Environmental and systemic hazards relevant to travel & play.",
+      "properties": {
+        "environmental_hazards": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "political_hazards": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "supernatural_hazards": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "hooks": {
+      "type": "array",
+      "description": "Region-level rumors, tensions, and plot hooks.",
+      "items": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_factions": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "related_locations": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "description": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": ["string", "null"],
+          "description": "Short, table-friendly overview of the region."
+        },
+        "detail": {
+          "type": ["string", "null"],
+          "description": "Long-form description and lore."
+        },
+        "travel_impressions": {
+          "type": ["string", "null"],
+          "description": "What it feels like to travel through this region."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["tier", "readiness"],
+      "properties": {
+        "tier": {
+          "type": "integer",
+          "description": "1=user/campaign canon, 2=world canon, 3=improv/draft."
+        },
+        "readiness": {
+          "type": "string",
+          "enum": ["draft", "refined", "final"]
+        },
+        "created_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "created_in_campaign": {
+          "type": ["string", "null"],
+          "description": "If this region originated from campaign improv."
+        },
+        "style_profile": {
+          "type": ["string", "null"],
+          "description": "Optional style/aesthetic label for generation."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

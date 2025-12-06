@@ -1,0 +1,118 @@
+{
+  "version": "v1.0",
+  "species": "halfling",
+  "culture": "strongheart",
+  "aliases": [
+    "Stout"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "halfling",
+    "strongheart"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "stout",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Bru",
+          "Sto",
+          "Ta",
+          "Re",
+          "Mar",
+          "Fen",
+          "Kel",
+          "Bo"
+        ],
+        "core": [
+          "gar",
+          "don",
+          "ran",
+          "thor",
+          "mon",
+          "lin",
+          "bar"
+        ],
+        "suffix": [
+          "o",
+          "in",
+          "ar",
+          "el"
+        ],
+        "family_core": [
+          "Hillfoot",
+          "Stonebottle",
+          "Broadcloak",
+          "Hearthhome",
+          "Oakflow"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "st",
+      "br"
+    ],
+    "forbiddenClusters": [
+      "ppp"
+    ],
+    "vowelBias": "medium",
+    "notes": "Strongheart names are sturdier, more grounded."
+  },
+  "rarity": {
+    "common": 0.65,
+    "uncommon": 0.25,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 7,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Pending review"
+  },
+  "examples": {
+    "male": [
+      "Brugar",
+      "Kelmon"
+    ],
+    "female": [
+      "Marlin",
+      "Fenel"
+    ],
+    "neutral": [
+      "Rethor"
+    ],
+    "family": [
+      "Hearthhome",
+      "Oakflow"
+    ]
+  }
+}

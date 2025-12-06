@@ -370,3 +370,90 @@ Divine conflict rarely means “god vs god” directly—more often it manifests
 
 ---
 **End of Divine Conflict Matrix – integrated into GM Toolkit v1.1**
+
+---
+# XIV. Divine Influence on Hazards & Travel
+
+The gods do not merely inspire narrative; their domains directly influence environmental hazards, travel difficulty, and the stability of magic across Casmoran. Use the following profiles to adjust hazard DCs, magic stability, or travel conditions whenever a deity’s presence is invoked, worshipped, or opposed. These guidelines complement the generic frameworks in the GM Screen and the regional overlays in Casmoran’s macro‑regions and biomes.
+
+## Per‑Deity Profiles
+
+### Aerathwyn – Verdant Mother
+- **Domain Hazards:** Amplifies wild‑growth hazards; mitigates environmental plant hazards.
+- **Region Bias:** Strong influence in **Greenwood**, **Southern Greenwood Arc**, and forested areas of the **Basin**.
+- **Effects:** Travel through dense forests becomes smoother under her blessing (reduce travel difficulty by one step); wild‑magic blooms become more stable.
+- **Boons & Omens:** Sudden blossoms or animal guides pointing toward safe paths indicate Aerathwyn’s favor. Invoking her may grant advantage on **Survival** checks to find shelter or forage.
+
+### Arturion – Maker of Ways
+- **Domain Hazards:** Mitigates structural hazards (collapsing ruins, bridge failures) and guides through engineered environments.
+- **Region Bias:** Prominent in **Southwestern Basin**, **Redspine Mountains**, and any region with major infrastructure.
+- **Effects:** Travelers may ignore the first structural hazard encountered; travel difficulty on maintained roads is reduced.
+- **Boons & Omens:** A subtle humming of stone or the sudden illumination of ancient markers signal Arturion’s aid. Invoking him grants advantage on **Investigation** checks to detect structural weaknesses.
+
+### Basturion – Shieldbearer
+- **Domain Hazards:** Reduces social and political hazards; fortifies camps against attacks.
+- **Region Bias:** Common in **Northwestern Frontier**, fortified settlements, and communal holds across Casmoran.
+- **Effects:** Rest safety tier improves by one category in Basturion’s sanctified spaces; hazard frequency decreases near oath‑stones.
+- **Boons & Omens:** Discovery of carved shields or oath‑stones signifies Basturion’s presence. Oath‑bound travelers may add +2 to defense against ambushes.
+
+### Emberith – Flame of Ambition
+- **Domain Hazards:** Amplifies hazards tied to passion and transformation (fires, rebellions); mitigates cold and stagnation.
+- **Region Bias:** Influential in **Bronze Plateau / Eastern Steppe**, creative enclaves in **Southern Greenwood**, and anywhere change is embraced.
+- **Effects:** Heat‑based hazards may intensify; cold‑climate travel difficulty drops by one step. Emberith’s favor can turn a failed hazard check into a partial success with a cost.
+- **Boons & Omens:** Flickering lights or inexplicable warmth indicate Emberith’s eye. Invocations may allow rerolling a failed **Constitution** save at the cost of gaining Exhaustion.
+
+### Lorynthos – Wordkeeper
+- **Domain Hazards:** Mitigates knowledge‑related hazards (ancient puzzles, mystical traps); warns of arcane anomalies.
+- **Region Bias:** Strong in **North‑Central Lakelands** colleges and archives, and wherever laws or libraries dominate.
+- **Effects:** When Lorynthos is honored, hazard detection becomes easier (advantage on **Perception** and **Arcana** to spot threats). Travel difficulty in civilized areas decreases.
+- **Boons & Omens:** Whispers of forgotten words or the spontaneous appearance of script herald Lorynthos’ favor. A quick prayer may reduce magic instability by one step.
+
+### Mirethiel – River‑Steward
+- **Domain Hazards:** Controls water‑borne hazards (floods, currents); calms storms but may amplify tides.
+- **Region Bias:** Dominant along **Southeastern Peninsulas**, **North‑Central Lakelands**, and any major waterways.
+- **Effects:** Travelers navigating rivers gain advantage on **Athletics** or **Vehicle (water)** checks; hazard frequency on waterways decreases.
+- **Boons & Omens:** Unseasonal rainbows or calm waters signal her blessing. Offerings may shift a hazard’s intensity down a category.
+
+### Omyr – Truth‑Seeker
+- **Domain Hazards:** Exposes hidden dangers; increases the severity of secrets‑based social hazards.
+- **Region Bias:** Prominent in **Dawnwall Highlands** hermit‑orders and sites of revelation.
+- **Effects:** Magical and planar hazards tied to truth or revelation may intensify; however, Omyr’s insight grants advantage on saves versus illusion or deception.
+- **Boons & Omens:** Sudden clarity or prophetic dreams indicate Omyr’s involvement. Invoking him grants +2 to checks to interpret omens but may attract additional hazards.
+
+### Tessimir – Coin‑Turner
+- **Domain Hazards:** Influences travel, trade, and chance. Mitigates hazards related to commerce and introduces opportunities within hazards.
+- **Region Bias:** Everywhere trade flows, notably **Southeastern Peninsulas**, **Bronze Plateau**, and **North‑Central Lakelands**.
+- **Effects:** Travel difficulty decreases on well‑traveled routes; hazard checks on trade roads may transform into beneficial encounters.
+- **Boons & Omens:** Shining coins or favorable winds indicate Tessimir’s presence. Invocations may convert one hazard roll into a random boon (DM discretion).
+
+### Thalvyr – Sky‑Seer
+- **Domain Hazards:** Controls wind and storm hazards; can both amplify and quell environmental extremes.
+- **Region Bias:** Governs open skies — **Dawnwall Highlands**, **Bronze Plateau**, and coastal storm belts.
+- **Effects:** Hazard intensity of storms can be increased or decreased based on Thalvyr’s favor; travel over open plains or sea benefits from reduced navigation DCs.
+- **Boons & Omens:** Sudden clear skies or thunderclaps with no storm indicate Thalvyr’s touch. A prayer may change a storm’s trajectory in the party’s favor.
+
+### Umbrayel – Night Shepherd
+- **Domain Hazards:** Mediates between life and death hazards; softens extreme effects of planar and wild magic.
+- **Region Bias:** Present wherever transitions occur — dreams, death rites, and borderlands; strong in **North‑Central Lakelands** and **Southern Greenwood**.
+- **Effects:** Rest safety tier improves by one when sanctified to Umbrayel; hazardous dreams may offer insights instead of afflictions.
+- **Boons & Omens:** Gentle breezes, unusual calm, or lucid dreams signal Umbrayel. Invoking him reduces exhaustion gained from hazards by one level.
+
+### Vharûn – World‑Anvil
+- **Domain Hazards:** Stabilizes structural and earth‑related hazards; intensifies stonefall and avalanche hazards when angered.
+- **Region Bias:** Core of **Redspine Mountains** and mining regions across Casmoran.
+- **Effects:** Hazard frequency in tunnels decreases; travel difficulty through mountainous terrain lowers with proper rituals. However, provoking Vharûn may trigger rockslides.
+- **Boons & Omens:** Deep rumbles, resonant tones in stone indicate Vharûn. Offerings grant advantage on **Strength** checks to overcome environmental obstacles.
+
+### Yhesseth – Unraveler
+- **Domain Hazards:** Amplifies entropy, decay, and anti‑magic hazards; dismantles protections.
+- **Region Bias:** Most active in the **Inner Sea / Heartland Basin** and dead‑magic pockets such as the **Southwestern Basin**.
+- **Effects:** In Yhesseth’s presence, magic stability drops to **volatile**; hazard DCs increase by 2. Mitigation becomes more difficult.
+- **Boons & Omens:** Sudden silence, darkness, or the withering of nearby life can foreshadow Yhesseth. Attempts to invoke the Unraveler may backfire but can unravel enemy enchantments.
+
+### Zephrix – Planewrecker
+- **Domain Hazards:** Causes planar rifts, wild magic surges, and unpredictable arcane storms.
+- **Region Bias:** Rife across the **Inner Sea**, **Bronze Plateau**, and areas riddled with planar scars.
+- **Effects:** Hazard frequency and intensity dramatically increase in Zephrix‑scarred zones; travel through such areas may require multiple checks per day. Magic stability becomes **severe**.
+- **Boons & Omens:** Shimmering air, crackling energy, and flickering reality mark Zephrix’s presence. Invoking Zephrix might allow travelers to tap planar shortcuts but risks catastrophic misfires.
+
+Use these profiles to adjust hazard and travel mechanics when characters invoke the gods, visit sacred sites, or experience divine omens. They extend the GM Screen hazard framework and Casmoran regional overlays with divine nuance.

@@ -1,0 +1,288 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Worldforge Prime Archivist API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "responses": {
+          "200": {
+            "description": "Service is healthy"
+          }
+        }
+      }
+    },
+    "/review": {
+      "post": {
+        "summary": "Submit an entity for review and conflict checking",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Review accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "conflictId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "conflictFields": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "entityId": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/store": {
+      "post": {
+        "summary": "Store a canonical entity",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CanonEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Entity stored in KV"
+          }
+        }
+      }
+    },
+    "/entity/get": {
+      "get": {
+        "summary": "Fetch a canonical entity by id and type",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Entity found"
+          },
+          "404": {
+            "description": "Entity not found"
+          }
+        }
+      }
+    },
+    "/entity/search": {
+      "post": {
+        "summary": "Search entities by type, tag, and free text",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "entityType": {
+                    "type": "string"
+                  },
+                  "tag": {
+                    "type": "string"
+                  },
+                  "q": {
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Search results"
+          }
+        }
+      }
+    },
+    "/resolve": {
+      "post": {
+        "summary": "Resolve a conflict and choose a canonical version",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResolveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conflict resolved"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CanonEntity": {
+        "type": "object",
+        "required": [
+          "id",
+          "entityType",
+          "name",
+          "summary",
+          "body",
+          "tags",
+          "metadata"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "entityType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timeline": {
+            "type": "object",
+            "properties": {
+              "era": {
+                "type": "string"
+              },
+              "year": {
+                "type": "number"
+              },
+              "relative": {
+                "type": "string"
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "required": [
+              "source",
+              "createdAt",
+              "updatedAt",
+              "version"
+            ],
+            "properties": {
+              "source": {
+                "type": "string"
+              },
+              "sourceRef": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string"
+              },
+              "updatedAt": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "ReviewRequest": {
+        "type": "object",
+        "required": [
+          "entity"
+        ],
+        "properties": {
+          "draftId": {
+            "type": "string"
+          },
+          "entity": {
+            "$ref": "#/components/schemas/CanonEntity"
+          },
+          "context": {
+            "type": "string"
+          }
+        }
+      },
+      "ResolveRequest": {
+        "type": "object",
+        "required": [
+          "conflictId",
+          "chosenVersion"
+        ],
+        "properties": {
+          "conflictId": {
+            "type": "string"
+          },
+          "chosenVersion": {
+            "type": "string"
+          },
+          "mergedEntity": {
+            "$ref": "#/components/schemas/CanonEntity"
+          },
+          "resolutionNote": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,340 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://worldforge-prime.dev/schemas/runtime_capsule.schema.json",
+    "title": "Worldforge Prime Runtime Capsule",
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+        "capsuleId",
+        "userId",
+        "campaign",
+        "preferences",
+        "state",
+        "runtimeFlags"
+    ],
+    "properties": {
+        "capsuleId": {
+            "type": "string",
+            "description": "Unique identifier for this capsule (user+campaign tab)."
+        },
+        "userId": {
+            "type": "string",
+            "description": "Stable ID for the user this capsule belongs to."
+        },
+        "campaign": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "id",
+                "name",
+                "system",
+                "lastActive",
+                "projectType"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Stable ID of the campaign or project."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Human-readable campaign or project name."
+                },
+                "system": {
+                    "type": "string",
+                    "enum": [
+                        "DND5.5E-2024"
+                    ],
+                    "description": "Rule system identifier."
+                },
+                "projectType": {
+                    "type": "string",
+                    "enum": [
+                        "campaign",
+                        "world",
+                        "region",
+                        "faction",
+                        "city",
+                        "pantheon",
+                        "npc-set",
+                        "item-set",
+                        "sandbox"
+                    ],
+                    "description": "High-level type of this tab: play-focused campaign vs creative/worldbuilding project."
+                },
+                "era": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Optional in-world era label for this campaign or project."
+                },
+                "lastActive": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "ISO8601 timestamp of last activity in this capsule."
+                }
+            }
+        },
+        "preferences": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "tone",
+                "density",
+                "pacing",
+                "cinematic"
+            ],
+            "properties": {
+                "tone": {
+                    "type": "string",
+                    "enum": [
+                        "heroic",
+                        "gritty",
+                        "grounded",
+                        "mythic",
+                        "cozy",
+                        "noir",
+                        "default"
+                    ],
+                    "description": "Overall tonal preference for narration."
+                },
+                "density": {
+                    "type": "string",
+                    "enum": [
+                        "lean",
+                        "balanced",
+                        "lush"
+                    ],
+                    "description": "Narrative density / wordiness preference."
+                },
+                "pacing": {
+                    "type": "string",
+                    "enum": [
+                        "fast",
+                        "normal",
+                        "slow"
+                    ],
+                    "description": "Preferred narrative pacing."
+                },
+                "cinematic": {
+                    "type": "string",
+                    "enum": [
+                        "low",
+                        "medium",
+                        "high"
+                    ],
+                    "description": "How cinematic vs. mechanical output should be."
+                },
+                "narratorVoice": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Optional descriptor for narrator voice (e.g., 'mythic gravitas')."
+                },
+                "dmPersona": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Optional descriptor for DM persona (e.g., 'dry wit, low drama')."
+                },
+                "creativeFocus": {
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "world",
+                        "region",
+                        "city",
+                        "settlement",
+                        "faction",
+                        "culture",
+                        "pantheon",
+                        "npc",
+                        "npc-roster",
+                        "item",
+                        "location",
+                        "misc"
+                    ],
+                    "default": "none",
+                    "description": "What type of asset the user is primarily working on right now."
+                },
+                "creativeDepth": {
+                    "type": "string",
+                    "enum": [
+                        "broad-strokes",
+                        "medium",
+                        "deep-dive"
+                    ],
+                    "default": "medium",
+                    "description": "How detailed Creative outputs should be by default."
+                },
+                "creativeFormat": {
+                    "type": "string",
+                    "enum": [
+                        "prose",
+                        "bullet-outline",
+                        "mixed",
+                        "schema-oriented"
+                    ],
+                    "default": "mixed",
+                    "description": "Preferred output shape for worldbuilding work."
+                }
+            }
+        },
+        "state": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "activeScene",
+                "pcs",
+                "npcs",
+                "locationsVisited",
+                "questFlags",
+                "travel"
+            ],
+            "properties": {
+                "activeScene": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "exploration",
+                        "combat",
+                        "social",
+                        "downtime",
+                        null
+                    ],
+                    "description": "Current high-level scene mode (for play-oriented tabs)."
+                },
+                "pcs": {
+                    "type": "array",
+                    "description": "Array of PC identifiers referenced in this capsule.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "npcs": {
+                    "type": "array",
+                    "description": "Array of NPC identifiers relevant to this capsule.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "locationsVisited": {
+                    "type": "array",
+                    "description": "IDs of locations the party has visited or that are central to this project.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "questFlags": {
+                    "type": "object",
+                    "description": "Loose key-value structure for quest progress flags or project milestones.",
+                    "additionalProperties": true
+                },
+                "travel": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                        "region",
+                        "path",
+                        "progress"
+                    ],
+                    "properties": {
+                        "region": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Region identifier for current or last-known area (if relevant)."
+                        },
+                        "path": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Optional path/route identifier or description."
+                        },
+                        "progress": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1,
+                            "description": "Travel progress as a 0–1 fraction along the current path."
+                        }
+                    }
+                },
+                "creativeContext": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [],
+                    "properties": {
+                        "assetType": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "enum": [
+                                null,
+                                "world",
+                                "region",
+                                "city",
+                                "settlement",
+                                "faction",
+                                "culture",
+                                "pantheon",
+                                "npc",
+                                "npc-roster",
+                                "item",
+                                "location",
+                                "dungeon",
+                                "document"
+                            ],
+                            "description": "Type of the main asset currently in focus, if any."
+                        },
+                        "assetId": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Optional identifier for the asset being iterated (could map to Archivist records)."
+                        },
+                        "assetLabel": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "description": "Human-friendly label for the current asset if no stable ID is used."
+                        }
+                    },
+                    "description": "Optional focus area for ongoing worldbuilding or drafting work."
+                }
+            }
+        },
+        "runtimeFlags": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "awaitingChoice",
+                "needsSummary",
+                "toneShift"
+            ],
+            "properties": {
+                "awaitingChoice": {
+                    "type": "boolean",
+                    "description": "True when Prime is explicitly waiting for a player choice."
+                },
+                "needsSummary": {
+                    "type": "boolean",
+                    "description": "True when a high-level recap would be useful next response."
+                },
+                "toneShift": {
+                    "type": "boolean",
+                    "description": "True when recent events suggest tone should adjust (lighter/darker)."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,206 @@
+{
+  "$id": "https://worldforge/schemas/capsule_campaign_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Campaign Capsule v1",
+  "type": "object",
+  "required": [
+    "capsule_id",
+    "capsule_type",
+    "status",
+    "owner_user_id",
+    "meta",
+    "preferences",
+    "players",
+    "pcs",
+    "npcs",
+    "scenes",
+    "state",
+    "lineage"
+  ],
+  "properties": {
+    "capsule_id": {
+      "type": "string",
+      "description": "Unique ID for this campaign capsule."
+    },
+    "capsule_type": {
+      "type": "string",
+      "const": "campaign"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["temp", "draft", "promoted"],
+      "description": "Lifecycle state for cleanup and promotion logic."
+    },
+    "owner_user_id": {
+      "type": "string",
+      "description": "Primary account/user that owns this campaign."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "meta": {
+      "type": "object",
+      "required": ["campaign_name", "ruleset"],
+      "properties": {
+        "campaign_name": { "type": "string" },
+        "ruleset": { "type": "string", "examples": ["5.5e"] },
+        "world_key": {
+          "type": ["string", "null"],
+          "description": "Optional world/setting identifier."
+        },
+        "description": { "type": ["string", "null"] },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "preferences": {
+      "type": "object",
+      "description": "Narrative/voice/rules preferences scoped to this campaign.",
+      "properties": {
+        "tone_profile": {
+          "type": "string",
+          "description": "Named tone profile, e.g. 'Low-Fantasy Gritty'."
+        },
+        "narrative_density": {
+          "type": "string",
+          "enum": ["sparse", "moderate", "lush", "maximalist"]
+        },
+        "voice_style": {
+          "type": "string",
+          "description": "High-level description of narration style."
+        },
+        "rules_strictness": {
+          "type": "string",
+          "enum": ["raw_strict", "raw_hybrid", "cinematic", "osr_lean"]
+        },
+        "safety_profile_id": {
+          "type": ["string", "null"],
+          "description": "Reference to a safety/boundaries profile."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "players": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["player_id"],
+        "properties": {
+          "player_id": { "type": "string" },
+          "display_name": { "type": ["string", "null"] },
+          "pc_ids": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "pcs": {
+      "type": "array",
+      "description": "List of character_ids for PCs associated with this campaign.",
+      "items": { "type": "string" }
+    },
+
+    "npcs": {
+      "type": "array",
+      "description": "List of character_ids for important NPCs.",
+      "items": { "type": "string" }
+    },
+
+    "factions": {
+      "type": "array",
+      "description": "List of faction IDs relevant to this campaign.",
+      "items": { "type": "string" }
+    },
+
+    "scenes": {
+      "type": "object",
+      "required": ["last_scene_id", "scene_history"],
+      "properties": {
+        "last_scene_id": { "type": ["string", "null"] },
+        "open_scenes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "scene_history": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "state": {
+      "type": "object",
+      "description": "High-level in-world state markers.",
+      "properties": {
+        "current_date": { "type": ["string", "null"] },
+        "current_region_id": { "type": ["string", "null"] },
+        "current_location_id": { "type": ["string", "null"] },
+        "active_quests": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "flags": {
+          "type": "object",
+          "additionalProperties": { "type": "boolean" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "lineage": {
+      "type": "object",
+      "description": "Promotion and history metadata.",
+      "properties": {
+        "promoted_from": { "type": ["string", "null"] },
+        "promotion_status": {
+          "type": "string",
+          "enum": ["temp", "draft", "promoted"]
+        },
+        "promotion_log": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": { "type": "string", "format": "date-time" },
+              "reason": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "storage": {
+      "type": "object",
+      "description": "Optional convenience references to KV keys.",
+      "properties": {
+        "pc_keys": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "npc_keys": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

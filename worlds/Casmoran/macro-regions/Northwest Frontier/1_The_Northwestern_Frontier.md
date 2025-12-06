@@ -1,0 +1,5 @@
+A cold, windswept land of fjords, pine forests, shale ridges, and lonely headlands battered by northern winds. Though lightly touched by the Shattering, the Frontier experienced one of the **longest magical droughts** during the Age of Silence, leaving behind eerie hollows where magic still flickers weakly. Tiny townships cling to rivers or bays, built by humans, dwarves, goliaths, and mixed ancestry families descended from early frontier settlers.
+
+The region holds some of the **oldest pre-OCE stonework**, built by ancient nonhuman cultures whose motifs still align with Vharûn and Aerathwyn’s iconography. Planar weather remnants from Thalvyr’s unheeded omens linger as ghost-storms along the coast. Frontier clans value self-reliance, oaths, and seasonal migrations; Basturion’s influence is strong, reflected in communal holds and oath-stones carved in cliff faces. Travelers speak of hidden valleys kept in unnatural equilibrium—likely residual protections of Umbrayel or Aerathwyn from the Shattering.
+
+---

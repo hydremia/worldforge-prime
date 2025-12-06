@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MapFeature",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "cartographer.mapFeature.v1"
+    },
+    "featureId": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "approxArea": {
+      "type": "object"
+    },
+    "approxPath": {
+      "type": "object"
+    },
+    "approxLocation": {
+      "type": "object"
+    },
+    "settlementHint": {
+      "type": "string"
+    },
+    "locationTypeHint": {
+      "type": "string"
+    },
+    "realmHint": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "featureId",
+    "kind"
+  ]
+}

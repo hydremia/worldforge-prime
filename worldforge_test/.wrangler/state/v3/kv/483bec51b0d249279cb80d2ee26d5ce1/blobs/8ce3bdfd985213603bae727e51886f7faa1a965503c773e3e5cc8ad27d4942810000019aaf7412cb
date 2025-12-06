@@ -1,0 +1,157 @@
+{
+  "version": "v1.0",
+  "species": "elf",
+  "culture": "wood_elf",
+  "aliases": [
+    "Copper Elf",
+    "Sy-Tel'Quessir"
+  ],
+  "tags": [
+    "faerun",
+    "core",
+    "elf",
+    "wood_elf"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}",
+      "{prefix}{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{prefix}{core}{suffix}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}",
+      "{prefix}{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "forest",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Tha",
+          "Ara",
+          "Syl",
+          "Tal",
+          "Or",
+          "Fa",
+          "Mae",
+          "Ren",
+          "Lor",
+          "Vel"
+        ],
+        "core": [
+          "drin",
+          "lan",
+          "thor",
+          "var",
+          "riel",
+          "drel",
+          "thorn",
+          "amir",
+          "lith",
+          "sor",
+          "faren",
+          "deth",
+          "thir"
+        ],
+        "suffix": [
+          "en",
+          "eth",
+          "as",
+          "is",
+          "el",
+          "ir",
+          "or",
+          "os",
+          "an"
+        ],
+        "family_core": [
+          "Oakenthorn",
+          "Greenbriar",
+          "Mosswalker",
+          "Riversong",
+          "Leafrunner",
+          "Duskwillow",
+          "Fernshade",
+          "Hartwatcher",
+          "Thornweaver",
+          "Wildbloom"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "th",
+      "dr",
+      "rl",
+      "rn",
+      "ll",
+      "ss"
+    ],
+    "forbiddenClusters": [
+      "kk",
+      "zzz"
+    ],
+    "vowelBias": "moderate",
+    "notes": "Wood Elf names tend to be shorter, earthier, and less ornamented than High Elf names, with a naturalistic feel."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 7,
+    "similarityThreshold": 0.83
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft",
+    "notes": "Initial Wood Elf set. Needs review for overlap with High Elf cores and naturalistic family names."
+  },
+  "examples": {
+    "male": [
+      "Thavaren",
+      "Loramir",
+      "Rendrel",
+      "Velthorn",
+      "Fadrin"
+    ],
+    "female": [
+      "Sylriel",
+      "Maethis",
+      "Aradeth",
+      "Taliren",
+      "Orriel"
+    ],
+    "neutral": [
+      "Thasor",
+      "Lorlan",
+      "Velthir",
+      "Rensor"
+    ],
+    "family": [
+      "Oakenthorn",
+      "Greenbriar",
+      "Leafrunner",
+      "Riversong",
+      "Duskwillow"
+    ]
+  }
+}

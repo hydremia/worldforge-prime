@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Worldforge Prime Action Schema Stubs (Phase 1)",
+  "type": "object",
+  "properties": {
+    "archivist_fetch": {
+      "type": "object",
+      "description": "Fetch canonical or stateful data for a given user/world/campaign/capsule context.",
+      "properties": {
+        "user_key": {
+          "type": "string"
+        },
+        "world_key": {
+          "type": "string",
+          "description": "e.g. 'FR', 'Homebrew_A', 'Eberron'"
+        },
+        "campaign_key": {
+          "type": "string"
+        },
+        "capsule_key": {
+          "type": "string"
+        },
+        "query": {
+          "type": "string",
+          "description": "Natural language or structured query describing what to fetch."
+        },
+        "filters": {
+          "type": "object",
+          "description": "Optional structured filters (e.g. type: 'npc', region: 'Dalelands').",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "user_key",
+        "world_key",
+        "query"
+      ]
+    },
+    "archivist_store": {
+      "type": "object",
+      "description": "Store or promote new canonical data for a given context.",
+      "properties": {
+        "user_key": {
+          "type": "string"
+        },
+        "world_key": {
+          "type": "string"
+        },
+        "campaign_key": {
+          "type": "string"
+        },
+        "capsule_key": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "object",
+          "description": "The data to store (lore entries, NPCs, region manifests, etc.).",
+          "additionalProperties": true
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Metadata such as tier, tags, version, and promotion notes.",
+          "properties": {
+            "tier": {
+              "type": "string",
+              "enum": [
+                "Tier1",
+                "Tier3"
+              ]
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "source": {
+              "type": "string"
+            },
+            "notes": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": [
+        "user_key",
+        "world_key",
+        "payload"
+      ]
+    },
+    "ops_version": {
+      "type": "object",
+      "description": "Query current system or API version, environment, or health status.",
+      "properties": {
+        "detail_level": {
+          "type": "string",
+          "enum": [
+            "summary",
+            "detailed"
+          ],
+          "default": "summary"
+        }
+      },
+      "required": []
+    },
+    "ops_qgate": {
+      "type": "object",
+      "description": "Run QGate or diagnostics for a given target (schema, bundle, or subsystem).",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "Name of the subsystem or bundle being gated, e.g. 'Prime v1.0 instruction block'."
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "preflight",
+            "full",
+            "quick"
+          ],
+          "default": "preflight"
+        },
+        "options": {
+          "type": "object",
+          "description": "Optional additional parameters for the QGate run.",
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "target"
+      ]
+    },
+    "nomina_generate_name": {
+      "type": "object",
+      "description": "Generate one or more names using the hybrid Nomina engine.",
+      "properties": {
+        "world_key": {
+          "type": "string",
+          "description": "World context; affects style and constraints."
+        },
+        "culture": {
+          "type": "string",
+          "description": "Species/culture/region (e.g. 'elf_high', 'human_chondathan')."
+        },
+        "gender": {
+          "type": "string",
+          "description": "Optional: 'male', 'female', 'neutral', etc."
+        },
+        "style": {
+          "type": "string",
+          "description": "Optional tone: 'common', 'noble', 'ancient', etc."
+        },
+        "count": {
+          "type": "integer",
+          "description": "How many names to generate.",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 50
+        },
+        "uniqueness_scope": {
+          "type": "string",
+          "description": "Scope for uniqueness checking (e.g. 'campaign', 'world')."
+        }
+      },
+      "required": [
+        "world_key",
+        "culture"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

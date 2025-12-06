@@ -1,0 +1,119 @@
+{
+  "version": "v1.0",
+  "species": "half_orc",
+  "culture": "faerun_half_orc",
+  "aliases": [
+    "Half-Orc"
+  ],
+  "tags": [
+    "faerun",
+    "half_orc"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "mixed",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Bra",
+          "Gar",
+          "Tal",
+          "Vor",
+          "Dro",
+          "Ka",
+          "Lor",
+          "Rog"
+        ],
+        "core": [
+          "gan",
+          "kor",
+          "rak",
+          "vor",
+          "dan",
+          "gorn",
+          "ruk"
+        ],
+        "suffix": [
+          "ar",
+          "en",
+          "or",
+          "ik",
+          "an"
+        ],
+        "family_core": [
+          "Stoneborn",
+          "Greyhand",
+          "Roughwater",
+          "Ironvein",
+          "Broadshield"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "gr",
+      "dr",
+      "rk",
+      "nd"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "medium",
+    "notes": "Half-orc names bridge harsh orcish roots with more flexible human phonology."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 7,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "Bragan",
+      "Drovik",
+      "Rogdan"
+    ],
+    "female": [
+      "Talora",
+      "Kareen"
+    ],
+    "neutral": [
+      "Vorkor"
+    ],
+    "family": [
+      "Stoneborn",
+      "Greyhand"
+    ]
+  }
+}

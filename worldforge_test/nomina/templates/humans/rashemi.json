@@ -1,0 +1,108 @@
+{
+  "version": "v1.0",
+  "species": "human",
+  "culture": "rashemi",
+  "aliases": [],
+  "tags": [
+    "faerun",
+    "human",
+    "rashemi"
+  ],
+  "templates": {
+    "male": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "female": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "neutral": [
+      "{prefix}{core}",
+      "{core}{suffix}"
+    ],
+    "family": [
+      "{family_core}"
+    ]
+  },
+  "patternSets": [
+    {
+      "id": "default",
+      "weight": 1.0,
+      "syllables": {
+        "prefix": [
+          "Da",
+          "Fa",
+          "Gor",
+          "Il",
+          "Ra",
+          "Vo"
+        ],
+        "core": [
+          "sha",
+          "gor",
+          "lan",
+          "vek",
+          "rim"
+        ],
+        "suffix": [
+          "a",
+          "in",
+          "ir"
+        ],
+        "family_core": [
+          "Ildasha",
+          "Rimvek",
+          "Gorlan"
+        ]
+      }
+    }
+  ],
+  "orthography": {
+    "caseStyle": "capitalized",
+    "allowedDigraphs": [
+      "th",
+      "ar",
+      "an",
+      "el",
+      "or"
+    ],
+    "forbiddenClusters": [
+      "zzz"
+    ],
+    "vowelBias": "medium",
+    "notes": "rashemi human naming patterns."
+  },
+  "rarity": {
+    "common": 0.6,
+    "uncommon": 0.3,
+    "rare": 0.1
+  },
+  "collision": {
+    "scope": "world",
+    "maxSimilarPer1000": 6,
+    "similarityThreshold": 0.82
+  },
+  "isolation": {
+    "isIsolated": false,
+    "modifier": null
+  },
+  "qa": {
+    "status": "draft"
+  },
+  "examples": {
+    "male": [
+      "DaSha"
+    ],
+    "female": [
+      "FaGor"
+    ],
+    "neutral": [
+      "DaRim"
+    ],
+    "family": [
+      "Ildasha",
+      "Rimvek"
+    ]
+  }
+}
